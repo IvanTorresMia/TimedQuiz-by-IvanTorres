@@ -1,0 +1,13 @@
+.card {
+  width: 18rem;
+  margin: 100px auto;
+}
+
+.hide {
+  display: none;
+}
+
+#button-container {
+  display: flex;
+  flex-direction: column;
+}

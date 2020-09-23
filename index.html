@@ -16,51 +16,50 @@
       crossorigin="anonymous"
     />
 
-    <title>Hello, world!</title>
+    <link rel="stylesheet" href="style.css" />
+
+    <title>Music Quiz</title>
   </head>
   <body>
-    <div class="container fixed-top" id="Timer-highScore">
-      <h3 class="float-left">High Scores</h3>
-      <h3 class="float-right">Timer Left</h3>
+    <div class="jumbotron jumbotron-fluid" id="timer-highScore">
+      <a class="float-left">High Scores</a>
+      <h3 class="float-right">Time Left <span id="timerNumber">0</span></h3>
     </div>
 
-    <div
-      class="card text-center"
-      style="margin-top: 10%; width: 20rem; margin-left: 40%"
-    >
-<!-- This is going to be the start button -->
-    <div class="card-body Start-Container">
-        <h3 class="card-title">Music Quiz</h3>
-        <div class="row row-cols-1">
-          <div class="col m-1">
-            <button type="button" class="btn btn-primary" id="start-Button">Start</button>
-          </div>
+    <!-- Start Button -->
+    <div class="card text-center" id="start-container">
+      <div class="card-body">
+        <h5 class="card-title">Music Quiz</h5>
+        <button class="btn btn-primary" id="start-button">Start</button>
+      </div>
+    </div>
+
+    <!-- Questions Container -->
+    <div class="card text-center hide" id="question-container">
+      <div class="card-body">
+        <h5 class="card-title" id="question"></h5>
+        <div id="button-container">
+          <button class="btn btn-primary buttonHook" id="answer1">A</button>
+          <button class="btn btn-primary buttonHook" id="answer2">B</button>
+          <button class="btn btn-primary buttonHook" id="answer3">C</button>
+          <button class="btn btn-primary buttonHook" id="answer4">D</button>
         </div>
       </div>
     </div>
 
-    <!-- this is the question container -->
-      <div class="card-body Questions-Container">
-        <h3 class="card-title">Music Quiz</h3>
-        <p class="card-text">Questions here</p>
-        <div class="row row-cols-1">
-          <div class="col m-1">
-            <button type="button" class="btn btn-primary">ANSWER</button>
-          </div>
-          <div class="col m-1">
-            <button type="button" class="btn btn-primary">ANSWER</button>
-          </div>
-          <div class="col m-1">
-            <button type="button" class="btn btn-primary">ANSWER</button>
-          </div>
-          <div class="col m-1">
-            <button type="button" class="btn btn-primary">ANSWER</button>
-          </div>
-        </div>
+    <!-- Finished Container -->
+    <div class="card text-center hide" id="end-container" style="margin-left: 40%;">
+      <div class="card-body">
+        <h5 class="card-title">All Done!</h5>
+        <form>
+          <input id="initials" type="text" />
+          <button type="submit" class="btn btn-primary" id="start-button">
+            Submit
+          </button>
+        </form>
       </div>
     </div>
 
-    <script src="script.js"></script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script
@@ -78,5 +77,6 @@
       integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
       crossorigin="anonymous"
     ></script>
+    <script src="script.js"></script>
   </body>
 </html>
