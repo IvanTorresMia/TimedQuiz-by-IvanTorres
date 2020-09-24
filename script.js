@@ -13,8 +13,6 @@ var submitBtn = document.querySelector(".submit-button");
 var timeId = document.getElementById("timerNumber");
 
 // Trying to get this to work. 
-var rightOrWrong = ["Correct!", "Wrong!"]
-var right = "right";
 var i = 0;
 var secondsLeft = 75;
 var score = 0;
@@ -213,12 +211,14 @@ function setTime() {
 submitBtn.addEventListener("click", function(event) {
     event.preventDefault();
     
+    var highScore = initials.value + ": " + score;
 
-    localStorage.setItem(initials.value, JSON.stringify(score))
+    localStorage.setItem("user", JSON.stringify(highScore));
     
 
   })
 
+//   export {submitBtn}
 
 
 
