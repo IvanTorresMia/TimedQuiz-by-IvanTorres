@@ -9,7 +9,7 @@ var button3 = document.getElementById("answer3");
 var button4 = document.getElementById("answer4");
 var endContainer = document.getElementById("end-container");
 var questionsDisplay = document.getElementById("question");
-var submitBtn = document.getElementById("submit-button");
+var submitBtn = document.querySelector(".submit-button");
 var timeId = document.getElementById("timerNumber");
 
 // Trying to get this to work. 
@@ -212,8 +212,11 @@ function setTime() {
 
 submitBtn.addEventListener("click", function(event) {
     event.preventDefault();
-    alert("it Worked!");
     
+
+    localStorage.setItem(initials.value, JSON.stringify(score))
+    
+
   })
 
 
