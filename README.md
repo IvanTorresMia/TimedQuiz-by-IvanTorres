@@ -1,7 +1,7 @@
 # TimedQuiz-by-IvanTorres
 
 ## Description 
-Welcome to my music quiz. In here you will find how much you know about music and trust me every questions is very well thought out so let's see how much of an expert you are. You are presented with start button then once you click you are presented with 10 questions which you will press buttons for and a timer which will start at 75 seconds. So here's the tricky part, anytime you get one of my very hard questions wrong your timer will deduct time and you are now running out of time to finish this quiz. Once you are done you will be presented with a form where you can input your initials and it should keep track of your scores. If you are reading this, it means I'm still trying to get that part to work! To conclude this quiz rock's and good luck! 
+Welcome to my music quiz. In here you will find how much you know about music and trust me every questions is very well thought out so let's see how much of an expert you are. You are presented with start button then once you click you are presented with 10 questions which you will press buttons for and a timer which will start at 75 seconds. So here's the tricky part, anytime you get one of my very hard questions wrong your timer will deduct time and you are now running out of time to finish this quiz. Once you are done you will be presented with a form where you can input your initials and it should keep track of your scores, then display them in that same container. 
 
 ## Technologies
 * [JavaScript](https://www.w3schools.com/js/)
@@ -10,7 +10,7 @@ Welcome to my music quiz. In here you will find how much you know about music an
 ## Features
 * Gif of my Website. 
 
-![Quiz-Gif]()
+![Quiz-Gif](images/timed-quiz2.gif)
 
 * This project was definetely challenging but with the guidence of my tutor and the help from some fellow students I was able to build this and make it work, here are some code snippets I made. 
 
@@ -74,6 +74,23 @@ function endQuiz() {
   timeId.textContent = 0;
 };
 ```
+
+Local storage attempt
+
+* This Code was an attempt to use local storage to display the scores in another, unfortunately I began to run out of time and went another way but decided to include this here anyways because I think I got close.
+
+* This is the code that when you click the submit button you send a new array into the local storage by using JSON.stringify
+
+![Quiz-Gif](images/local-Code.jpg)
+
+* This Code was in another script.js file dedicated to another html file which would be used to display the scores pulling the array and using JSON.parse and using forEach to make them into a list. 
+
+![Quiz-Gif](images/local-Code2.jpg)
+
+* This is what would have been the container in the Scores.html file in which the scores would be displayed. 
+
+![Quiz-Gif](images/local-Code3.jpg)
+
 
 ## Author
 Ivan Torres

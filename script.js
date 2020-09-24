@@ -2,7 +2,7 @@ var startContainer = document.querySelector("#start-container");
 var startBtn = document.getElementById("start-button");
 var questionsContainer = document.querySelector("#question-container");
 var checkContainer = document.getElementById("check-container");
-var initials = document.getElementById("initials")
+var initials = document.getElementById("initials");
 var button1 = document.getElementById("answer1");
 var button2 = document.getElementById("answer2");
 var button3 = document.getElementById("answer3");
@@ -11,13 +11,16 @@ var endContainer = document.getElementById("end-container");
 var questionsDisplay = document.getElementById("question");
 var submitBtn = document.querySelector(".submit-button");
 var timeId = document.getElementById("timerNumber");
+var scoreList = document.getElementById("scoresList");
+var tryAgain = document.getElementById("tryAgain-button");
 
-// Trying to get this to work. 
+// variables for timer 
 var i = 0;
 var secondsLeft = 75;
 var score = 0;
-
 var timerInterval;
+
+// object array of questions
 var quizQuestions = [
   {
     question: ["What is the number system?"],
@@ -113,19 +116,20 @@ function startQuiz() {
   button4.textContent = quizQuestions[i].choices[3];
 }
 
+// here every button you click will check for correct answers and present a new set of questions and answers when i increments
 button1.addEventListener("click", function (event) {
   if (event.target.innerHTML === quizQuestions[i]["correctAnswer"]) {
     i++;
     score++;
-    checkContainer.textContent = "Correct!"
+    checkContainer.textContent = "Correct!";
     startQuiz();
   } else {
-    checkContainer.textContent = "Incorrect!"
+    checkContainer.textContent = "Incorrect!";
     i++;
     if (secondsLeft === 0) {
-        endQuiz();
+      endQuiz();
     } else {
-        secondsLeft = secondsLeft - 10;
+      secondsLeft = secondsLeft - 10;
     }
     startQuiz();
   }
@@ -134,15 +138,15 @@ button2.addEventListener("click", function (event) {
   if (event.target.innerHTML === quizQuestions[i]["correctAnswer"]) {
     i++;
     score++;
-    checkContainer.textContent = "Correct!"
+    checkContainer.textContent = "Correct!";
     startQuiz();
   } else {
-    checkContainer.textContent = "Incorrect!"
+    checkContainer.textContent = "Incorrect!";
     i++;
     if (secondsLeft === 0) {
-        endQuiz();
+      endQuiz();
     } else {
-        secondsLeft = secondsLeft - 10;
+      secondsLeft = secondsLeft - 10;
     }
     startQuiz();
   }
@@ -151,15 +155,15 @@ button3.addEventListener("click", function (event) {
   if (event.target.innerHTML === quizQuestions[i]["correctAnswer"]) {
     i++;
     score++;
-    checkContainer.textContent = "Correct!"
+    checkContainer.textContent = "Correct!";
     startQuiz();
   } else {
-    checkContainer.textContent = "Incorrect!"
+    checkContainer.textContent = "Incorrect!";
     i++;
     if (secondsLeft === 0) {
-        endQuiz();
+      endQuiz();
     } else {
-        secondsLeft = secondsLeft - 10;
+      secondsLeft = secondsLeft - 10;
     }
     startQuiz();
   }
@@ -168,20 +172,19 @@ button4.addEventListener("click", function (event) {
   if (event.target.innerHTML === quizQuestions[i]["correctAnswer"]) {
     i++;
     score++;
-    checkContainer.textContent = "Correct!"
+    checkContainer.textContent = "Correct!";
     startQuiz();
   } else {
-    checkContainer.textContent = "Incorrect!"
+    checkContainer.textContent = "Incorrect!";
     i++;
     if (secondsLeft === 0) {
-        endQuiz();
+      endQuiz();
     } else {
-        secondsLeft = secondsLeft - 10;
+      secondsLeft = secondsLeft - 10;
     }
     startQuiz();
   }
 });
-
 
 // This function ends the quiz
 function endQuiz() {
@@ -192,7 +195,6 @@ function endQuiz() {
   clearInterval(timerInterval);
   timeId.textContent = 0;
 }
-
 
 // This Function will start the tiimer and end the quiz if it reaches 0
 function setTime() {
@@ -208,39 +210,31 @@ function setTime() {
 
 
 
-submitBtn.addEventListener("click", function(event) {
-    event.preventDefault();
-    
-    // var highScore = initials.value + ": " + score;
+submitBtn.addEventListener("click", function (event) {
+  event.preventDefault();
 
-    // localStorage.setItem("user", JSON.stringify(highScore));
-    
-    initials.innerHTML = "";
-  })
+if (initials.value === "") {
+    alert("You have to type your initials")
+} else {
+    var initialsScores = initials.value + " " + score;
+  var liItem = document.createElement("li");
+  liItem.textContent = initialsScores;
+  scoresList.appendChild(liItem);
+  document.querySelector(".initials").reset();
+}
+});
+
+
+tryAgain.addEventListener("click", function (event) {
+  event.preventDefault();
+
+  startContainer.setAttribute("class", "hide");
+  endContainer.setAttribute("class", "hide");
+  questionsContainer.setAttribute("class", "none");
+  secondsLeft = 75;
+  startQuiz();
+ setTime();
+});
 
 
 
-
-
-// function setScore() {
-//     initials = initials.textContent
-//     localStorage.setItem(initials, score);
-// }
-
-// setScore()
-// // local storage is module 4 activity 25-28
-// var score = 2;
-// localStorage.setItem("key", score);
-// var storedScore = localStorage.getItem("key");
-
-// var scores = [2, 3, 4, 5];
-// localStorage.setItem("scores", JSON.stringify(scores));
-// var storedScores = JSON.parse(localStorage.getItem("scores"));
-
-// var scoresWithInitials = [
-//   {
-//     initials: "hf",
-//     score: "5",
-//   },
-// ];
-// // timer activity is module 4 activity 8

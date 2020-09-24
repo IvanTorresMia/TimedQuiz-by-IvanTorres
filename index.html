@@ -22,8 +22,7 @@
   </head>
   <body>
     <div class="jumbotron jumbotron-fluid" id="timer-highScore">
-      <a href="highScores.html" class="float-left" style="margin-left: 10%;">High Scores</a>
-      <h3 class="float-right" style="margin-right: 10%;">Time Left <span id="timerNumber">0</span></h3>
+      <h3 class="float-right" style="margin-right: 10%;">Time Left <span id="timerNumber">75</span></h3>
     </div>
 
     <!-- Start Button -->
@@ -54,10 +53,14 @@
         <h5 class="card-title">All Done!</h5>
         <p class="card-text">Type you're initials</p>
         <form>
-          <input id="initials" type="text" />
+          <input id="initials" type="text" class="initials" />
           <button type="submit" class="btn btn-primary submit-button" id="submit-button">
             Submit
           </button>
+          <button type="submit" class="btn btn-primary tryAgain-button" id="tryAgain-button">
+            Try Again
+          </button>
+          <div id="scoresList">Scores</div>
         </form>
       </div>
     </div>
