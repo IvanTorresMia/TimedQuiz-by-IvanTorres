@@ -211,14 +211,13 @@ function setTime() {
 submitBtn.addEventListener("click", function(event) {
     event.preventDefault();
     
-    var highScore = initials.value + ": " + score;
+    // var highScore = initials.value + ": " + score;
 
-    localStorage.setItem("user", JSON.stringify(highScore));
+    // localStorage.setItem("user", JSON.stringify(highScore));
     
-
+    initials.innerHTML = "";
   })
 
-//   export {submitBtn}
 
 
 
