@@ -22,7 +22,9 @@
   </head>
   <body>
     <div class="jumbotron jumbotron-fluid" id="timer-highScore">
-      <h3 class="float-right" style="margin-right: 10%;">Time Left <span id="timerNumber">75</span></h3>
+      <h3 class="float-right" style="margin-right: 10%">
+        Time Left <span id="timerNumber">75</span>
+      </h3>
     </div>
 
     <!-- Start Button -->
@@ -38,26 +40,34 @@
       <div class="card-body">
         <h5 class="card-title" id="question"></h5>
         <div id="button-container">
-          <button class="btn btn-primary buttonHook" id="answer1">A</button>
-          <button class="btn btn-primary buttonHook" id="answer2">B</button>
-          <button class="btn btn-primary buttonHook" id="answer3">C</button>
-          <button class="btn btn-primary buttonHook" id="answer4">D</button>
-          <div id="check-container">?</div>
+          <div id="check-container"> </div>
         </div>
       </div>
     </div>
 
     <!-- Finished Container -->
-    <div class="card text-center hide" id="end-container" style="margin-left: 40%;">
+    <div
+      class="card text-center hide"
+      id="end-container"
+      style="margin-left: 40%"
+    >
       <div class="card-body">
         <h5 class="card-title">All Done!</h5>
         <p class="card-text">Type you're initials</p>
         <form>
           <input id="initials" type="text" class="initials" />
-          <button type="submit" class="btn btn-primary submit-button" id="submit-button">
+          <button
+            type="submit"
+            class="btn btn-primary submit-button"
+            id="submit-button"
+          >
             Submit
           </button>
-          <button type="submit" class="btn btn-primary tryAgain-button" id="tryAgain-button">
+          <button
+            type="submit"
+            class="btn btn-primary tryAgain-button"
+            id="tryAgain-button"
+          >
             Try Again
           </button>
           <div id="scoresList">Scores</div>
