@@ -3,18 +3,19 @@ var startBtn = document.getElementById("start-button");
 var questionsContainer = document.querySelector("#question-container");
 var checkContainer = document.getElementById("check-container");
 var initials = document.getElementById("initials");
-var button1 = document.getElementById("answer1");
-var button2 = document.getElementById("answer2");
-var button3 = document.getElementById("answer3");
-var button4 = document.getElementById("answer4");
+// var button2 = document.getElementById("answer2");
+// var button3 = document.getElementById("answer3");
+// var button4 = document.getElementById("answer4");
 var endContainer = document.getElementById("end-container");
 var questionsDisplay = document.getElementById("question");
 var submitBtn = document.querySelector(".submit-button");
 var timeId = document.getElementById("timerNumber");
 var scoreList = document.getElementById("scoresList");
 var tryAgain = document.getElementById("tryAgain-button");
+let buttonCon = document.getElementById("button-container");
 
-// variables for timer 
+
+// variables for timer
 var i = 0;
 var secondsLeft = 75;
 var score = 0;
@@ -105,86 +106,63 @@ startBtn.addEventListener("click", function () {
 });
 
 //This function will update the answers
+// If the the count of i = the lentgth the questions then the end quiz container pops up.
 function startQuiz() {
   if (i == quizQuestions.length) {
     endQuiz();
   }
+  // This is how we append the current question and the answers into the box.
   questionsDisplay.textContent = quizQuestions[i]["question"];
-  button1.textContent = quizQuestions[i].choices[0];
-  button2.textContent = quizQuestions[i].choices[1];
-  button3.textContent = quizQuestions[i].choices[2];
-  button4.textContent = quizQuestions[i].choices[3];
+
+  for (j = 0; j < 4; j++) {
+    let answerButton = document.createElement("BUTTON");
+    var id = answerButton.setAttribute("id", "answer");
+    answerButton.setAttribute("class", "btn-primary rounded answerButtons");
+    answerButton.textContent = quizQuestions[i].choices[j];
+    buttonCon.appendChild(answerButton);
+
+  }
+  var button = document.querySelector("#answer");
+button.addEventListener("click", function(event) {
+  event.preventDefault()
+    if (this.innerHTML === quizQuestions[i]["correctAnswer"]) {
+    i++;
+    score++;
+    checkContainer.textContent = "Correct!";
+    startQuiz();
+  } else {
+    checkContainer.textContent = "Incorrect!";
+    i++;
+    if (secondsLeft === 0) {
+      endQuiz();
+    } else {
+      secondsLeft = secondsLeft - 10;
+    }
+    startQuiz();
+  }
+})
+
 }
 
 // here every button you click will check for correct answers and present a new set of questions and answers when i increments
-button1.addEventListener("click", function (event) {
-  if (event.target.innerHTML === quizQuestions[i]["correctAnswer"]) {
-    i++;
-    score++;
-    checkContainer.textContent = "Correct!";
-    startQuiz();
-  } else {
-    checkContainer.textContent = "Incorrect!";
-    i++;
-    if (secondsLeft === 0) {
-      endQuiz();
-    } else {
-      secondsLeft = secondsLeft - 10;
-    }
-    startQuiz();
-  }
-});
-button2.addEventListener("click", function (event) {
-  if (event.target.innerHTML === quizQuestions[i]["correctAnswer"]) {
-    i++;
-    score++;
-    checkContainer.textContent = "Correct!";
-    startQuiz();
-  } else {
-    checkContainer.textContent = "Incorrect!";
-    i++;
-    if (secondsLeft === 0) {
-      endQuiz();
-    } else {
-      secondsLeft = secondsLeft - 10;
-    }
-    startQuiz();
-  }
-});
-button3.addEventListener("click", function (event) {
-  if (event.target.innerHTML === quizQuestions[i]["correctAnswer"]) {
-    i++;
-    score++;
-    checkContainer.textContent = "Correct!";
-    startQuiz();
-  } else {
-    checkContainer.textContent = "Incorrect!";
-    i++;
-    if (secondsLeft === 0) {
-      endQuiz();
-    } else {
-      secondsLeft = secondsLeft - 10;
-    }
-    startQuiz();
-  }
-});
-button4.addEventListener("click", function (event) {
-  if (event.target.innerHTML === quizQuestions[i]["correctAnswer"]) {
-    i++;
-    score++;
-    checkContainer.textContent = "Correct!";
-    startQuiz();
-  } else {
-    checkContainer.textContent = "Incorrect!";
-    i++;
-    if (secondsLeft === 0) {
-      endQuiz();
-    } else {
-      secondsLeft = secondsLeft - 10;
-    }
-    startQuiz();
-  }
-});
+// This is very repetetive code I can maybe find a way to clean this up.
+// button.addEventListener("click", function (event) {
+//   if (event.target.innerHTML === quizQuestions[i]["correctAnswer"]) {
+//     i++;
+//     score++;
+//     checkContainer.textContent = "Correct!";
+//     startQuiz();
+//   } else {
+//     checkContainer.textContent = "Incorrect!";
+//     i++;
+//     if (secondsLeft === 0) {
+//       endQuiz();
+//     } else {
+//       secondsLeft = secondsLeft - 10;
+//     }
+//     startQuiz();
+//   }
+// });
 
 // This function ends the quiz
 function endQuiz() {
@@ -208,23 +186,21 @@ function setTime() {
   }, 1000);
 }
 
-
-
+// This is a button listener for when you hit the submit button you are able to put your scores in a list
 submitBtn.addEventListener("click", function (event) {
   event.preventDefault();
 
-if (initials.value === "") {
-    alert("You have to type your initials")
-} else {
+  if (initials.value === "") {
+    alert("You have to type your initials");
+  } else {
     var initialsScores = initials.value + " " + score;
-  var liItem = document.createElement("li");
-  liItem.textContent = initialsScores;
-  scoresList.appendChild(liItem);
-  document.querySelector(".initials").reset();
-}
+    var liItem = document.createElement("li");
+    liItem.textContent = initialsScores;
+    scoresList.appendChild(liItem);
+  }
 });
 
-
+// This is an event listener for a try again button that takes you back to the questions and try again.
 tryAgain.addEventListener("click", function (event) {
   event.preventDefault();
 
@@ -233,8 +209,5 @@ tryAgain.addEventListener("click", function (event) {
   questionsContainer.setAttribute("class", "none");
   secondsLeft = 75;
   startQuiz();
- setTime();
+  setTime();
 });
-
-
-
