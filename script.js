@@ -14,7 +14,6 @@ var scoreList = document.getElementById("scoresList");
 var tryAgain = document.getElementById("tryAgain-button");
 let buttonCon = document.getElementById("button-container");
 
-
 // variables for timer
 var i = 0;
 var secondsLeft = 75;
@@ -116,32 +115,36 @@ function startQuiz() {
 
   for (j = 0; j < 4; j++) {
     let answerButton = document.createElement("BUTTON");
-    var id = answerButton.setAttribute("id", "answer");
+    answerButton.setAttribute("id", "answer" + (j + 1));
     answerButton.setAttribute("class", "btn-primary rounded answerButtons");
     answerButton.textContent = quizQuestions[i].choices[j];
     buttonCon.appendChild(answerButton);
-
+    console.log(answerButton)
   }
-  var button = document.querySelector("#answer");
-button.addEventListener("click", function(event) {
-  event.preventDefault()
+
+  let buttonTags = ["#answer1", "#answer2", "#answer3, #answer4"]
+
+
+  ("#answer").addEventListener("click", function () {
     if (this.innerHTML === quizQuestions[i]["correctAnswer"]) {
-    i++;
-    score++;
-    checkContainer.textContent = "Correct!";
-    startQuiz();
-  } else {
-    checkContainer.textContent = "Incorrect!";
-    i++;
-    if (secondsLeft === 0) {
-      endQuiz();
+      i++;
+      score++;
+      checkContainer.textContent = "Correct!";
+          buttonCon.innerHTML = "";
+      startQuiz();
+  
     } else {
-      secondsLeft = secondsLeft - 10;
+      buttonCon.innerHTML = "";
+      checkContainer.textContent = "Incorrect!";
+      i++;
+      if (secondsLeft === 0 || secondsLeft < 0) {
+        endQuiz();
+      } else {
+        secondsLeft = secondsLeft - 10;
+      }
+      startQuiz();
     }
-    startQuiz();
-  }
-})
-
+  });
 }
 
 // here every button you click will check for correct answers and present a new set of questions and answers when i increments
