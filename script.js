@@ -3,9 +3,6 @@ var startBtn = document.getElementById("start-button");
 var questionsContainer = document.querySelector("#question-container");
 var checkContainer = document.getElementById("check-container");
 var initials = document.getElementById("initials");
-// var button2 = document.getElementById("answer2");
-// var button3 = document.getElementById("answer3");
-// var button4 = document.getElementById("answer4");
 var endContainer = document.getElementById("end-container");
 var questionsDisplay = document.getElementById("question");
 var submitBtn = document.querySelector(".submit-button");
@@ -109,63 +106,35 @@ startBtn.addEventListener("click", function () {
 function startQuiz() {
   if (i == quizQuestions.length) {
     endQuiz();
-  }
-  // This is how we append the current question and the answers into the box.
-  questionsDisplay.textContent = quizQuestions[i]["question"];
-
-  for (j = 0; j < 4; j++) {
-    let answerButton = document.createElement("BUTTON");
-    answerButton.setAttribute("id", "answer" + (j + 1));
-    answerButton.setAttribute("class", "btn-primary rounded answerButtons");
-    answerButton.textContent = quizQuestions[i].choices[j];
-    buttonCon.appendChild(answerButton);
-    console.log(answerButton)
-  }
-
-  let buttonTags = ["#answer1", "#answer2", "#answer3, #answer4"]
-
-
-  ("#answer").addEventListener("click", function () {
-    if (this.innerHTML === quizQuestions[i]["correctAnswer"]) {
-      i++;
-      score++;
-      checkContainer.textContent = "Correct!";
+  } else {
+    questionsDisplay.textContent = quizQuestions[i]["question"];
+    for (j = 1; j <= 4; j++) {
+      var currentButton = document.querySelector("#answer" + j);
+      currentButton.textContent = quizQuestions[i].choices[j - 1];
+      currentButton.addEventListener("click", function (event) {
+        event.preventDefault();
+        console.log(quizQuestions[i]);
+        if (this.innerHTML === quizQuestions[i]["correctAnswer"]) {
+          i++;
+          score++;
+          checkContainer.textContent = "Correct!";
           buttonCon.innerHTML = "";
-      startQuiz();
-  
-    } else {
-      buttonCon.innerHTML = "";
-      checkContainer.textContent = "Incorrect!";
-      i++;
-      if (secondsLeft === 0 || secondsLeft < 0) {
-        endQuiz();
-      } else {
-        secondsLeft = secondsLeft - 10;
-      }
-      startQuiz();
+          startQuiz();
+        } else {
+          buttonCon.innerHTML = "";
+          checkContainer.textContent = "Incorrect!";
+          i++;
+          if (secondsLeft === 0 || secondsLeft < 0) {
+            endQuiz();
+          } else {
+            secondsLeft = secondsLeft - 10;
+          }
+          startQuiz();
+        }
+      });
     }
-  });
+  }
 }
-
-// here every button you click will check for correct answers and present a new set of questions and answers when i increments
-// This is very repetetive code I can maybe find a way to clean this up.
-// button.addEventListener("click", function (event) {
-//   if (event.target.innerHTML === quizQuestions[i]["correctAnswer"]) {
-//     i++;
-//     score++;
-//     checkContainer.textContent = "Correct!";
-//     startQuiz();
-//   } else {
-//     checkContainer.textContent = "Incorrect!";
-//     i++;
-//     if (secondsLeft === 0) {
-//       endQuiz();
-//     } else {
-//       secondsLeft = secondsLeft - 10;
-//     }
-//     startQuiz();
-//   }
-// });
 
 // This function ends the quiz
 function endQuiz() {
@@ -214,3 +183,54 @@ tryAgain.addEventListener("click", function (event) {
   startQuiz();
   setTime();
 });
+
+// document.querySelector("#answer2").addEventListener("click", function () {
+//   console.log(this)
+//   if (this.innerHTML === quizQuestions[i]["correctAnswer"]) {
+//     i++;
+//     score++;
+//     checkContainer.textContent = "Correct!";
+//         buttonCon.innerHTML = "";
+//     startQuiz();
+
+//   } else {
+//     buttonCon.innerHTML = "";
+//     checkContainer.textContent = "Incorrect!";
+//     i++;
+//     if (secondsLeft === 0 || secondsLeft < 0) {
+//       endQuiz();
+//     } else {
+//       secondsLeft = secondsLeft - 10;
+//     }
+//     startQuiz();
+//   }
+// });
+
+// here every button you click will check for correct answers and present a new set of questions and answers when i increments
+// This is very repetetive code I can maybe find a way to clean this up.
+// button.addEventListener("click", function (event) {
+//   if (event.target.innerHTML === quizQuestions[i]["correctAnswer"]) {
+//     i++;
+//     score++;
+//     checkContainer.textContent = "Correct!";
+//     startQuiz();
+//   } else {
+//     checkContainer.textContent = "Incorrect!";
+//     i++;
+//     if (secondsLeft === 0) {
+//       endQuiz();
+//     } else {
+//       secondsLeft = secondsLeft - 10;
+//     }
+//     startQuiz();
+//   }
+// });
+
+// for (j = 0; j < 4; j++) {
+//   let answerButton = document.createElement("BUTTON");
+//   answerButton.setAttribute("id", "answer" + (j + 1));
+//   answerButton.setAttribute("class", "btn-primary rounded answerButtons");
+//   answerButton.textContent = quizQuestions[i].choices[j];
+//   buttonCon.appendChild(answerButton);
+//   console.log(answerButton)
+// }
