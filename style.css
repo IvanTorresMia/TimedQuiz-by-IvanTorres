@@ -15,3 +15,14 @@
 .answerButtons {
   margin: 2px;
 }
+
+.navbar {
+  text-align: center;
+  width: 100%;
+  background-color: gray;
+}
+
+.time{
+  margin-right: 100px;
+}
+

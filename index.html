@@ -21,11 +21,16 @@
     <title>Music Quiz</title>
   </head>
   <body>
-    <div class="jumbotron jumbotron-fluid" id="timer-highScore">
-      <h3 class="float-right" style="margin-right: 10%">
-        Time Left <span id="timerNumber">75</span>
-      </h3>
-    </div>
+    <header class="mb-5 navbar">
+      <div class="row">
+        <div class="col time">
+          <h3 class="">Time Left <span id="timerNumber">75</span></h3>
+        </div>
+        <div class="col score">
+          <h3 class="">Score <span id="score">0</span></h3>
+        </div>
+      </div>
+    </header>
 
     <!-- Start Button -->
     <div class="card text-center" id="start-container">
@@ -40,11 +45,11 @@
       <div class="card-body">
         <h5 class="card-title" id="question"></h5>
         <div id="button-container">
-          <button class="btn-primary rounded answerButtons" id="answer1"></button>
-          <button class="btn-primary rounded answerButtons" id="answer2"></button>
-          <button class="btn-primary rounded answerButtons" id="answer3"></button>
-          <button class="btn-primary rounded answerButtons" id="answer4"></button>
-          <div id="check-container"> </div>
+          <!-- <button class="btn-primary rounded answerButtons" id="answer"></button>
+          <button class="btn-primary rounded answerButtons" id="answer"></button>
+          <button class="btn-primary rounded answerButtons" id="answer"></button>
+          <button class="btn-primary rounded answerButtons" id="answer"></button> -->
+          <div id="check-container"></div>
         </div>
       </div>
     </div>

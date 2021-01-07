@@ -1,24 +1,27 @@
-var startContainer = document.querySelector("#start-container");
-var startBtn = document.getElementById("start-button");
-var questionsContainer = document.querySelector("#question-container");
-var checkContainer = document.getElementById("check-container");
-var initials = document.getElementById("initials");
-var endContainer = document.getElementById("end-container");
-var questionsDisplay = document.getElementById("question");
-var submitBtn = document.querySelector(".submit-button");
-var timeId = document.getElementById("timerNumber");
-var scoreList = document.getElementById("scoresList");
-var tryAgain = document.getElementById("tryAgain-button");
-let buttonCon = document.getElementById("button-container");
 
-// variables for timer
-var i = 0;
-var secondsLeft = 75;
-var score = 0;
-var timerInterval;
+
+let startContainer = document.querySelector("#start-container");
+let startBtn = document.getElementById("start-button");
+let questionsContainer = document.querySelector("#question-container");
+let checkContainer = document.getElementById("check-container");
+let initials = document.getElementById("initials");
+let endContainer = document.getElementById("end-container");
+let questionsDisplay = document.getElementById("question");
+let submitBtn = document.querySelector(".submit-button");
+let timeId = document.getElementById("timerNumber");
+let scoreList = document.getElementById("scoresList");
+let tryAgain = document.getElementById("tryAgain-button");
+let buttonCon = document.getElementById("button-container");
+let userScore = document.getElementById("score")
+
+// letiables for timer
+let i = 0
+let secondsLeft = 75;
+let score = 0;
+let timerInterval;
 
 // object array of questions
-var quizQuestions = [
+let quizQuestions = [
   {
     question: ["What is the number system?"],
     choices: [
@@ -63,7 +66,7 @@ var quizQuestions = [
     question: ["Who in the beattles was shot outside of a show?"],
     choices: [
       "None, they're alive",
-      "Daniel Vargas",
+      "Daniel letgas",
       "Ivan Torres",
       "John Lennon",
     ],
@@ -101,38 +104,46 @@ startBtn.addEventListener("click", function () {
   startQuiz();
 });
 
-//This function will update the answers
-// If the the count of i = the lentgth the questions then the end quiz container pops up.
+
 function startQuiz() {
   if (i == quizQuestions.length) {
     endQuiz();
   } else {
     questionsDisplay.textContent = quizQuestions[i]["question"];
-    for (j = 1; j <= 4; j++) {
-      var currentButton = document.querySelector("#answer" + j);
-      currentButton.textContent = quizQuestions[i].choices[j - 1];
-      currentButton.addEventListener("click", function (event) {
-        event.preventDefault();
-        console.log(quizQuestions[i]);
-        if (this.innerHTML === quizQuestions[i]["correctAnswer"]) {
-          i++;
-          score++;
-          checkContainer.textContent = "Correct!";
-          buttonCon.innerHTML = "";
-          startQuiz();
-        } else {
-          buttonCon.innerHTML = "";
-          checkContainer.textContent = "Incorrect!";
-          i++;
-          if (secondsLeft === 0 || secondsLeft < 0) {
-            endQuiz();
-          } else {
-            secondsLeft = secondsLeft - 10;
-          }
-          startQuiz();
-        }
-      });
+
+    for (j = 0; j < 4; j++) {
+      let answerButton = document.createElement("BUTTON");
+      answerButton.setAttribute("id", "answer");
+      answerButton.setAttribute("class", "btn-primary rounded answerButtons");
+      answerButton.textContent = quizQuestions[i].choices[j];
+      buttonCon.appendChild(answerButton);
+
+      answerButton.addEventListener("click", selectAnswer);
     }
+  }
+}
+
+function selectAnswer(e) {
+  e.preventDefault();
+  console.log(e.target);
+
+  if (e.target.innerHTML === quizQuestions[i]["correctAnswer"]) {
+    i++;
+    score++;
+    checkContainer.textContent = "Correct!";
+    buttonCon.innerHTML = "";
+    userScore.innerHTML = score;
+    startQuiz();
+  } else {
+    buttonCon.innerHTML = "";
+    checkContainer.textContent = "Incorrect!";
+    i++;
+    if (secondsLeft <= 0) {
+      endQuiz();
+    } else {
+      secondsLeft -= 10;
+    }
+    startQuiz();
   }
 }
 
@@ -152,7 +163,7 @@ function setTime() {
     secondsLeft--;
     timeId.textContent = secondsLeft;
 
-    if (secondsLeft === 0) {
+    if (secondsLeft <= 0) {
       endQuiz();
     }
   }, 1000);
@@ -165,8 +176,8 @@ submitBtn.addEventListener("click", function (event) {
   if (initials.value === "") {
     alert("You have to type your initials");
   } else {
-    var initialsScores = initials.value + " " + score;
-    var liItem = document.createElement("li");
+    let initialsScores = initials.value + " " + score;
+    let liItem = document.createElement("li");
     liItem.textContent = initialsScores;
     scoresList.appendChild(liItem);
   }
@@ -183,54 +194,3 @@ tryAgain.addEventListener("click", function (event) {
   startQuiz();
   setTime();
 });
-
-// document.querySelector("#answer2").addEventListener("click", function () {
-//   console.log(this)
-//   if (this.innerHTML === quizQuestions[i]["correctAnswer"]) {
-//     i++;
-//     score++;
-//     checkContainer.textContent = "Correct!";
-//         buttonCon.innerHTML = "";
-//     startQuiz();
-
-//   } else {
-//     buttonCon.innerHTML = "";
-//     checkContainer.textContent = "Incorrect!";
-//     i++;
-//     if (secondsLeft === 0 || secondsLeft < 0) {
-//       endQuiz();
-//     } else {
-//       secondsLeft = secondsLeft - 10;
-//     }
-//     startQuiz();
-//   }
-// });
-
-// here every button you click will check for correct answers and present a new set of questions and answers when i increments
-// This is very repetetive code I can maybe find a way to clean this up.
-// button.addEventListener("click", function (event) {
-//   if (event.target.innerHTML === quizQuestions[i]["correctAnswer"]) {
-//     i++;
-//     score++;
-//     checkContainer.textContent = "Correct!";
-//     startQuiz();
-//   } else {
-//     checkContainer.textContent = "Incorrect!";
-//     i++;
-//     if (secondsLeft === 0) {
-//       endQuiz();
-//     } else {
-//       secondsLeft = secondsLeft - 10;
-//     }
-//     startQuiz();
-//   }
-// });
-
-// for (j = 0; j < 4; j++) {
-//   let answerButton = document.createElement("BUTTON");
-//   answerButton.setAttribute("id", "answer" + (j + 1));
-//   answerButton.setAttribute("class", "btn-primary rounded answerButtons");
-//   answerButton.textContent = quizQuestions[i].choices[j];
-//   buttonCon.appendChild(answerButton);
-//   console.log(answerButton)
-// }
