@@ -1,21 +1,26 @@
+// Nav Timer and Score Hooks
+let timeId = document.getElementById("timerNumber"); 
+let userScore = document.getElementById("userScore");
 
-
+// First Container Hooks
 let startContainer = document.querySelector("#start-container");
 let startBtn = document.getElementById("start-button");
+
+// Second Container Hooks
 let questionsContainer = document.querySelector("#question-container");
-let checkContainer = document.getElementById("check-container");
-let userName = document.getElementById("name");
-let endContainer = document.getElementById("end-container");
 let questionsDisplay = document.getElementById("question");
-let submitBtn = document.querySelector(".submit-button");
-let timeId = document.getElementById("timerNumber");
+let buttonCon = document.getElementById("answers-container");
+let checkContainer = document.getElementById("check-answersr");
+
+// Third Container Hooks
+let endContainer = document.getElementById("end-container");
 let scoreList = document.getElementById("scoresList");
+let userName = document.getElementById("name");
+let submitBtn = document.querySelector(".submit-button");
 let tryAgain = document.getElementById("tryAgain-button");
-let buttonCon = document.getElementById("button-container");
-let userScore = document.getElementById("userScore")
 
 // letiables for timer
-let i = 0
+let i = 0;
 let secondsLeft = 75;
 let score = 0;
 let timerInterval;
@@ -103,7 +108,6 @@ startBtn.addEventListener("click", function () {
   setTime();
   startQuiz();
 });
-
 
 function startQuiz() {
   if (i == quizQuestions.length) {
