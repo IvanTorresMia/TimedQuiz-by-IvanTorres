@@ -18,13 +18,13 @@ let userName = document.getElementById("name");
 let submitBtn = document.querySelector(".submit-button");
 
 //Scores Container Hooks
-let scoreContainer = document.getElementById("scoreContainer")
+let scoreContainer = document.getElementById("scoreContainer");
 let scoreList = document.getElementById("scoreList");
 let tryAgain = document.getElementById("tryAgain");
 
 // local Storage Scores
 let scoresArr = JSON.parse(localStorage.getItem("scores")) || [];
-// renderScores(scoresArr)
+
 // variables for timer
 let i = 0;
 let secondsLeft = 75;
@@ -112,14 +112,14 @@ tryAgain.addEventListener("click", restart);
 
 // Functions start here.
 //=======================
-// 
+//
 // ======================
 
 function start() {
   startContainer.setAttribute("class", "hide");
   endContainer.setAttribute("class", "hide");
   questionsContainer.setAttribute("class", "none container text-center");
-  scoreContainer.setAttribute("class", "hide" )
+  scoreContainer.setAttribute("class", "hide");
 
   setTime();
   questions();
@@ -137,7 +137,6 @@ function questions() {
       answerButton.setAttribute("class", "btn-primary rounded answerButtons");
       answerButton.textContent = quizQuestions[i].choices[j];
       buttonCon.appendChild(answerButton);
-
       answerButton.addEventListener("click", selectAnswer);
     }
   }
@@ -182,7 +181,7 @@ function endQuiz() {
   startContainer.setAttribute("class", "hide container");
   endContainer.setAttribute("class", "none container text-center");
   questionsContainer.setAttribute("class", "hide container");
-  scoreContainer.setAttribute("class", "hide" )
+  scoreContainer.setAttribute("class", "hide");
   i = 0;
   clearInterval(timerInterval);
   timeId.textContent = 0;
@@ -197,25 +196,37 @@ function submit(event) {
   } else {
     let nameScores = userName.value + " " + score;
     userName.value = "";
-    scoresArr.push(nameScores)
-    localStorage.setItem("scores", JSON.stringify(scoresArr))
+    scoresArr.push(nameScores);
+    localStorage.setItem("scores", JSON.stringify(scoresArr));
     scoreList.innerHTML = "";
-    renderScores(scoresArr)
+    renderScores(scoresArr);
   }
 }
 
 function renderScores(scores) {
-  scores.forEach(score => {
-    let currentScore = document.createElement("p");
+  scores.forEach((score) => {
+    let div = document.createElement("DIV")
+    div.setAttribute("class", "row")
+
+    let currentScore = document.createElement("P");
+    currentScore.setAttribute("class", "lead")
     currentScore.textContent = score;
-    scoreList.appendChild(currentScore);
+
+    let removeBtn = document.createElement("BUTTON");
+    removeBtn.innerHTML = "delete"
+    removeBtn.setAttribute("class", "btn-primary removeBtn")
+ 
+    div.appendChild(currentScore);
+    div.appendChild(removeBtn)
+
+    scoreList.appendChild(div);
+
+
     startContainer.setAttribute("class", "hide container");
     endContainer.setAttribute("class", "hide container");
     questionsContainer.setAttribute("class", "hide container");
-    scoreContainer.setAttribute("class", "none container text-center")
-
+    scoreContainer.setAttribute("class", "none container text-center");
   });
-
 }
 
 // This is an event listener for a try again button that takes you back to the questions and try again.
@@ -225,11 +236,11 @@ function restart(event) {
   startContainer.setAttribute("class", "hide container");
   endContainer.setAttribute("class", "hide container");
   questionsContainer.setAttribute("class", "none container text-center");
-  scoreContainer.setAttribute("class", "hide" )
+  scoreContainer.setAttribute("class", "hide");
 
   secondsLeft = 75;
   score = 0;
-  userScore.textContent =  score;
+  userScore.textContent = score;
   buttonCon.innerHTML = "";
   questions();
   setTime();
