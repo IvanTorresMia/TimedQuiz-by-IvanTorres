@@ -4,7 +4,7 @@ let startContainer = document.querySelector("#start-container");
 let startBtn = document.getElementById("start-button");
 let questionsContainer = document.querySelector("#question-container");
 let checkContainer = document.getElementById("check-container");
-let initials = document.getElementById("initials");
+let initials = document.getElementById("name");
 let endContainer = document.getElementById("end-container");
 let questionsDisplay = document.getElementById("question");
 let submitBtn = document.querySelector(".submit-button");
@@ -176,8 +176,10 @@ submitBtn.addEventListener("click", function (event) {
   if (initials.value === "") {
     alert("You have to type your initials");
   } else {
+    // stores the value of the stores and your name
     let initialsScores = initials.value + " " + score;
-    let liItem = document.createElement("li");
+    // stores the p tag
+    let liItem = document.createElement("p");
     liItem.textContent = initialsScores;
     scoresList.appendChild(liItem);
   }
