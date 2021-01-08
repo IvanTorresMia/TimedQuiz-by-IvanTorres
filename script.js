@@ -1,5 +1,5 @@
 // Nav Timer and Score Hooks
-let timeId = document.getElementById("timerNumber"); 
+let timeId = document.getElementById("timerNumber");
 let userScore = document.getElementById("userScore");
 
 // First Container Hooks
@@ -99,17 +99,22 @@ let quizQuestions = [
   },
 ];
 
-//This fuunction will start the quiz
-startBtn.addEventListener("click", function () {
+// Event Listeners
+startBtn.addEventListener("click", start);
+submitBtn.addEventListener("click", submit);
+tryAgain.addEventListener("click", restart);
+
+// Functions start here.
+function start() {
   startContainer.setAttribute("class", "hide");
   endContainer.setAttribute("class", "hide");
   questionsContainer.setAttribute("class", "none");
 
   setTime();
-  startQuiz();
-});
+  questions();
+}
 
-function startQuiz() {
+function questions() {
   if (i == quizQuestions.length) {
     endQuiz();
   } else {
@@ -130,14 +135,13 @@ function startQuiz() {
 function selectAnswer(e) {
   e.preventDefault();
   console.log(e.target);
-
   if (e.target.innerHTML === quizQuestions[i]["correctAnswer"]) {
     i++;
     score++;
     checkContainer.textContent = "Correct!";
     buttonCon.innerHTML = "";
     userScore.innerHTML = score;
-    startQuiz();
+    questions();
   } else {
     buttonCon.innerHTML = "";
     checkContainer.textContent = "Incorrect!";
@@ -147,8 +151,19 @@ function selectAnswer(e) {
     } else {
       secondsLeft -= 10;
     }
-    startQuiz();
+    questions();
   }
+}
+
+// This Function will start the tiimer and end the quiz if it reaches 0
+function setTime() {
+  timerInterval = setInterval(function () {
+    secondsLeft--;
+    timeId.textContent = secondsLeft;
+    if (secondsLeft <= 0) {
+      endQuiz();
+    }
+  }, 1000);
 }
 
 // This function ends the quiz
@@ -161,20 +176,8 @@ function endQuiz() {
   timeId.textContent = 0;
 }
 
-// This Function will start the tiimer and end the quiz if it reaches 0
-function setTime() {
-  timerInterval = setInterval(function () {
-    secondsLeft--;
-    timeId.textContent = secondsLeft;
-
-    if (secondsLeft <= 0) {
-      endQuiz();
-    }
-  }, 1000);
-}
-
-// This is a button listener for when you hit the submit button you are able to put your scores in a list
-submitBtn.addEventListener("click", function (event) {
+// This function will submit your name and scores to be added.
+function submit(event) {
   event.preventDefault();
 
   if (userName.value === "") {
@@ -187,16 +190,16 @@ submitBtn.addEventListener("click", function (event) {
     liItem.textContent = nameScores;
     scoresList.appendChild(liItem);
   }
-});
+}
 
 // This is an event listener for a try again button that takes you back to the questions and try again.
-tryAgain.addEventListener("click", function (event) {
+function restart(event) {
   event.preventDefault();
 
   startContainer.setAttribute("class", "hide container");
   endContainer.setAttribute("class", "hide container");
   questionsContainer.setAttribute("class", "none container");
   secondsLeft = 75;
-  startQuiz();
+  questions();
   setTime();
-});
+}

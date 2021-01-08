@@ -1,12 +1,20 @@
+/* Used to Hide Container when not needed */
 .hide {
   display: none;
 }
 
+/* NavBar Stying */
+.navbar {
+  text-align: center;
+  width: 100%;
+  background-color: gray;
+}
+
+/* Second Container Styling */
 #questions-container {
   width: 18rem;
   margin: 100px auto;
 }
-
 #answers-container {
   display: flex;
   flex-direction: column;
@@ -16,17 +24,10 @@
   margin: 2px;
 }
 
-.navbar {
-  text-align: center;
-  width: 100%;
-  background-color: gray;
-}
-
-.time{
-  margin-right: 100px;
-}
-
+/* Last Container Styling */
 #scoresList {
   padding-bottom: 2px;
 }
+
+
 
