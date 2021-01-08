@@ -149,9 +149,9 @@ function selectAnswer(e) {
 
 // This function ends the quiz
 function endQuiz() {
-  startContainer.setAttribute("class", "hide");
-  endContainer.setAttribute("class", "none");
-  questionsContainer.setAttribute("class", "hide");
+  startContainer.setAttribute("class", "hide container");
+  endContainer.setAttribute("class", "none container");
+  questionsContainer.setAttribute("class", "hide container");
   i = 0;
   clearInterval(timerInterval);
   timeId.textContent = 0;
@@ -189,9 +189,9 @@ submitBtn.addEventListener("click", function (event) {
 tryAgain.addEventListener("click", function (event) {
   event.preventDefault();
 
-  startContainer.setAttribute("class", "hide");
-  endContainer.setAttribute("class", "hide");
-  questionsContainer.setAttribute("class", "none");
+  startContainer.setAttribute("class", "hide container");
+  endContainer.setAttribute("class", "hide container");
+  questionsContainer.setAttribute("class", "none container");
   secondsLeft = 75;
   startQuiz();
   setTime();
