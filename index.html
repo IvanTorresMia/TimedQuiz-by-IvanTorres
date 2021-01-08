@@ -23,25 +23,25 @@
   <body>
     <header class="mb-5 navbar">
       <div class="row">
-        <div class="col time">
-          <h3 class="">Time Left <span id="timerNumber">75</span></h3>
+        <div class="col" id="time">
+          <h3>Time Left <span id="timerNumber">75</span></h3>
         </div>
-        <div class="col score">
-          <h3 class="">Score <span id="score">0</span></h3>
+        <div class="col" id="score">
+          <h3>Score <span id="userScore">0</span></h3>
         </div>
       </div>
     </header>
 
     <!-- Start Button -->
     <div class="container" id="start-container">
-        <h5 class="">Music Quiz</h5>
+        <h5>Music Quiz</h5>
         <button class="btn btn-primary" id="start-button">Start</button>
     </div>
 
     <!-- Questions Container -->
     <div class="hide container" id="question-container">
-      <div class="">
-        <h5 class="" id="question"></h5>
+      <div>
+        <h5 id="question"></h5>
         <div id="button-container">
           <div id="check-container"></div>
         </div>
@@ -50,11 +50,11 @@
 
     <!-- Finished Container -->
     <div class="hide container" id="end-container" style="margin-left: 40%">
-      <div class="">
-        <h5 class="">All Done!</h5>
-        <p class="">Type you're initials</p>
+      <div>
+        <h5>All Done!</h5>
+        <p>Type you're initials</p>
         <form>
-          <input id="name" type="text" class="name" />
+          <input id="name" type="text"/>
           <button
             type="submit"
             class="btn btn-primary submit-button"

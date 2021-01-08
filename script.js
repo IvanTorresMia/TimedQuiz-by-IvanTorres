@@ -4,7 +4,7 @@ let startContainer = document.querySelector("#start-container");
 let startBtn = document.getElementById("start-button");
 let questionsContainer = document.querySelector("#question-container");
 let checkContainer = document.getElementById("check-container");
-let initials = document.getElementById("name");
+let userName = document.getElementById("name");
 let endContainer = document.getElementById("end-container");
 let questionsDisplay = document.getElementById("question");
 let submitBtn = document.querySelector(".submit-button");
@@ -12,7 +12,7 @@ let timeId = document.getElementById("timerNumber");
 let scoreList = document.getElementById("scoresList");
 let tryAgain = document.getElementById("tryAgain-button");
 let buttonCon = document.getElementById("button-container");
-let userScore = document.getElementById("score")
+let userScore = document.getElementById("userScore")
 
 // letiables for timer
 let i = 0
@@ -173,14 +173,14 @@ function setTime() {
 submitBtn.addEventListener("click", function (event) {
   event.preventDefault();
 
-  if (initials.value === "") {
-    alert("You have to type your initials");
+  if (userName.value === "") {
+    alert("You have to type your name");
   } else {
     // stores the value of the stores and your name
-    let initialsScores = initials.value + " " + score;
+    let nameScores = userName.value + " " + score;
     // stores the p tag
     let liItem = document.createElement("p");
-    liItem.textContent = initialsScores;
+    liItem.textContent = nameScores;
     scoresList.appendChild(liItem);
   }
 });
