@@ -10,16 +10,19 @@ let startBtn = document.getElementById("start-button");
 let questionsContainer = document.querySelector("#question-container");
 let questionsDisplay = document.getElementById("question");
 let buttonCon = document.getElementById("answers-container");
-let checkContainer = document.getElementById("check-answersr");
+let checkContainer = document.getElementById("check-answers");
 
 // Third Container Hooks
 let endContainer = document.getElementById("end-container");
-let scoreList = document.getElementById("scoresList");
 let userName = document.getElementById("name");
 let submitBtn = document.querySelector(".submit-button");
-let tryAgain = document.getElementById("tryAgain-button");
 
-// letiables for timer
+//Scores Container Hooks
+let scoreContainer = document.getElementById("scoreContainer")
+let scoreList = document.getElementById("scoreList");
+let tryAgain = document.getElementById("tryAgain");
+
+// variables for timer
 let i = 0;
 let secondsLeft = 75;
 let score = 0;
@@ -105,10 +108,15 @@ submitBtn.addEventListener("click", submit);
 tryAgain.addEventListener("click", restart);
 
 // Functions start here.
+//=======================
+// 
+// ======================
+
 function start() {
   startContainer.setAttribute("class", "hide");
   endContainer.setAttribute("class", "hide");
-  questionsContainer.setAttribute("class", "none");
+  questionsContainer.setAttribute("class", "none container text-center");
+  scoreContainer.setAttribute("class", "hide" )
 
   setTime();
   questions();
@@ -169,8 +177,9 @@ function setTime() {
 // This function ends the quiz
 function endQuiz() {
   startContainer.setAttribute("class", "hide container");
-  endContainer.setAttribute("class", "none container");
+  endContainer.setAttribute("class", "none container text-center");
   questionsContainer.setAttribute("class", "hide container");
+  scoreContainer.setAttribute("class", "hide" )
   i = 0;
   clearInterval(timerInterval);
   timeId.textContent = 0;
@@ -183,12 +192,15 @@ function submit(event) {
   if (userName.value === "") {
     alert("You have to type your name");
   } else {
-    // stores the value of the stores and your name
     let nameScores = userName.value + " " + score;
-    // stores the p tag
     let liItem = document.createElement("p");
+    userName.value = "";
     liItem.textContent = nameScores;
-    scoresList.appendChild(liItem);
+    scoreList.appendChild(liItem);
+    startContainer.setAttribute("class", "hide container");
+    endContainer.setAttribute("class", "hide container");
+    questionsContainer.setAttribute("class", "hide container");
+    scoreContainer.setAttribute("class", "none container text-center" )
   }
 }
 
@@ -198,8 +210,13 @@ function restart(event) {
 
   startContainer.setAttribute("class", "hide container");
   endContainer.setAttribute("class", "hide container");
-  questionsContainer.setAttribute("class", "none container");
+  questionsContainer.setAttribute("class", "none container text-center");
+  scoreContainer.setAttribute("class", "hide" )
+
   secondsLeft = 75;
+  score = 0;
+  userScore.textContent =  score;
+  buttonCon.innerHTML = "";
   questions();
   setTime();
 }

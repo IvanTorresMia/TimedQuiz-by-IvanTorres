@@ -22,6 +22,8 @@
 
 .answerButtons {
   margin: 2px;
+  max-width: 250px;
+  padding: 10px
 }
 
 /* Last Container Styling */

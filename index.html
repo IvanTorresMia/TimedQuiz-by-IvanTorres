@@ -33,13 +33,13 @@
     </header>
 
     <!-- Start Button -->
-    <div class="container" id="start-container">
+    <div class="container text-center" id="start-container">
       <h5>Music Quiz</h5>
       <button class="btn btn-primary" id="start-button">Start</button>
     </div>
 
     <!-- Questions Container -->
-    <div class="hide container" id="question-container">
+    <div class="hide container text-center" id="question-container">
       <div>
         <h5 id="question"></h5>
         <div id="answers-container">
@@ -49,7 +49,7 @@
     </div>
 
     <!-- Finished Container -->
-    <div class="hide container" id="end-container" style="margin-left: 40%">
+    <div class="hide container text-center" id="end-container" style="margin-left: 40%">
       <div>
         <h5>All Done!</h5>
         <p>Type you're initials</p>
@@ -62,19 +62,16 @@
           >
             Submit
           </button>
-          <button
-            type="submit"
-            class="btn btn-primary tryAgain-button"
-            id="tryAgain-button"
-          >
-            Try Again
-          </button>
-          <div class="row">
-            <h3>Scores</h3>
-            <div id="scoresList row"></div>
-          </div>
         </form>
       </div>
+    </div>
+
+    <!-- Scores Container -->
+    <div class="hide container text-center" id="scoreContainer">
+      <h3>Top Scores</h3>
+      <div class="row" id="scoreList"></div>
+
+      <button class="btn-primary" id="tryAgain">Try Again</button>
     </div>
 
     <!-- Optional JavaScript -->
