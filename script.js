@@ -22,6 +22,9 @@ let scoreContainer = document.getElementById("scoreContainer")
 let scoreList = document.getElementById("scoreList");
 let tryAgain = document.getElementById("tryAgain");
 
+// local Storage Scores
+let scoresArr = JSON.parse(localStorage.getItem("scores")) || [];
+// renderScores(scoresArr)
 // variables for timer
 let i = 0;
 let secondsLeft = 75;
@@ -193,15 +196,26 @@ function submit(event) {
     alert("You have to type your name");
   } else {
     let nameScores = userName.value + " " + score;
-    let liItem = document.createElement("p");
     userName.value = "";
-    liItem.textContent = nameScores;
-    scoreList.appendChild(liItem);
+    scoresArr.push(nameScores)
+    localStorage.setItem("scores", JSON.stringify(scoresArr))
+    scoreList.innerHTML = "";
+    renderScores(scoresArr)
+  }
+}
+
+function renderScores(scores) {
+  scores.forEach(score => {
+    let currentScore = document.createElement("p");
+    currentScore.textContent = score;
+    scoreList.appendChild(currentScore);
     startContainer.setAttribute("class", "hide container");
     endContainer.setAttribute("class", "hide container");
     questionsContainer.setAttribute("class", "hide container");
-    scoreContainer.setAttribute("class", "none container text-center" )
-  }
+    scoreContainer.setAttribute("class", "none container text-center")
+
+  });
+
 }
 
 // This is an event listener for a try again button that takes you back to the questions and try again.
