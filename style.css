@@ -22,10 +22,12 @@
 #answers-container {
   display: flex;
   flex-direction: column;
+  text-align: center;
+  border: 2px solid black;
 }
 
 .answerButtons {
-  margin: 2px;
+  margin-top: 5px;
   max-width: 250px;
   padding: 10px;
 }
@@ -33,4 +35,21 @@
 /* Last Container Styling */
 #scoresList {
   padding-bottom: 2px;
+}
+
+.container {
+  background-color: #EBEBEB;
+  border: 1px solid black;
+  padding: 20px;
+  margin-left: 0 auto;
+  margin-right: 0 auto;
+  margin-top: 100px;
+  text-align: center;
+}
+
+
+.heading {
+  margin: 10px;
+  border: 2px solid black;
+ 
 }
