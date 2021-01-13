@@ -21,6 +21,7 @@ let submitBtn = document.querySelector(".submit-button");
 let scoreContainer = document.getElementById("scoreContainer");
 let scoreList = document.getElementById("scoreList");
 let tryAgain = document.getElementById("tryAgain");
+let removeBtn = document.querySelector(".removeBtn")
 
 // local Storage Scores
 let scoresArr = JSON.parse(localStorage.getItem("scores")) || [];
@@ -118,7 +119,7 @@ tryAgain.addEventListener("click", restart);
 function start() {
   startContainer.setAttribute("class", "hide");
   endContainer.setAttribute("class", "hide");
-  questionsContainer.setAttribute("class", "none container text-center");
+  questionsContainer.setAttribute("class", "container");
   scoreContainer.setAttribute("class", "hide");
 
   setTime();
@@ -129,7 +130,7 @@ function questions() {
   if (i == quizQuestions.length) {
     endQuiz();
   } else {
-    questionsDisplay.textContent = quizQuestions[i]["question"];
+    questionsDisplay.innerHTML = quizQuestions[i]["question"];
 
     for (j = 0; j < 4; j++) {
       let answerButton = document.createElement("BUTTON");
@@ -178,9 +179,9 @@ function setTime() {
 
 // This function ends the quiz
 function endQuiz() {
-  startContainer.setAttribute("class", "hide container");
-  endContainer.setAttribute("class", "none container text-center");
-  questionsContainer.setAttribute("class", "hide container");
+  startContainer.setAttribute("class", "hide");
+  endContainer.setAttribute("class", "container text-center");
+  questionsContainer.setAttribute("class", "hide");
   scoreContainer.setAttribute("class", "hide");
   i = 0;
   clearInterval(timerInterval);
@@ -194,7 +195,7 @@ function submit(event) {
   if (userName.value === "") {
     alert("You have to type your name");
   } else {
-    let nameScores = userName.value + " " + score;
+    let nameScores = userName.value + ": " + score;
     userName.value = "";
     scoresArr.push(nameScores);
     localStorage.setItem("scores", JSON.stringify(scoresArr));
@@ -203,8 +204,11 @@ function submit(event) {
   }
 }
 
+// change this function so that only the top scores show up.
 function renderScores(scores) {
+
   scores.forEach((score) => {
+    
     let div = document.createElement("DIV")
     div.setAttribute("class", "row")
 
@@ -222,10 +226,10 @@ function renderScores(scores) {
     scoreList.appendChild(div);
 
 
-    startContainer.setAttribute("class", "hide container");
-    endContainer.setAttribute("class", "hide container");
-    questionsContainer.setAttribute("class", "hide container");
-    scoreContainer.setAttribute("class", "none container text-center");
+    startContainer.setAttribute("class", "hide");
+    endContainer.setAttribute("class", "hide");
+    questionsContainer.setAttribute("class", "hide");
+    scoreContainer.setAttribute("class", "container text-center");
   });
 }
 
@@ -233,8 +237,8 @@ function renderScores(scores) {
 function restart(event) {
   event.preventDefault();
 
-  startContainer.setAttribute("class", "hide container");
-  endContainer.setAttribute("class", "hide container");
+  startContainer.setAttribute("class", "hide");
+  endContainer.setAttribute("class", "hide");
   questionsContainer.setAttribute("class", "none container text-center");
   scoreContainer.setAttribute("class", "hide");
 
@@ -244,4 +248,15 @@ function restart(event) {
   buttonCon.innerHTML = "";
   questions();
   setTime();
+}
+
+function deleteScore(event) {
+  event.preventDefault();
+
+  for (i = 0; i < scoresArr.length; i++) {
+
+    
+      
+  }
+
 }
