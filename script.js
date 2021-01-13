@@ -229,7 +229,7 @@ function renderScores(scores) {
   startContainer.setAttribute("class", "hide");
   endContainer.setAttribute("class", "hide");
   questionsContainer.setAttribute("class", "hide");
-  scoreContainer.setAttribute("class", "container text-center");
+  scoreContainer.setAttribute("class", "container text-center scoreContainer");
 }
 
 // This is an event listener for a try again button that takes you back to the questions and try again.

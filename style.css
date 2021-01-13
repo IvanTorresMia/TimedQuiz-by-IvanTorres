@@ -51,5 +51,11 @@
 .heading {
   margin: 10px;
   border: 2px solid black;
- 
 }
+
+/* .scoreContainer {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  border: 2px solid black;
+} */
