@@ -21,7 +21,7 @@ let submitBtn = document.querySelector(".submit-button");
 let scoreContainer = document.getElementById("scoreContainer");
 let scoreList = document.getElementById("scoreList");
 let tryAgain = document.getElementById("tryAgain");
-let removeBtn = document.querySelector(".removeBtn")
+
 
 // local Storage Scores
 let scoresArr = JSON.parse(localStorage.getItem("scores")) || [];
@@ -145,7 +145,6 @@ function questions() {
 
 function selectAnswer(e) {
   e.preventDefault();
-  console.log(e.target);
   if (e.target.innerHTML === quizQuestions[i]["correctAnswer"]) {
     i++;
     score++;
@@ -207,14 +206,14 @@ function submit(event) {
 // change this function so that only the top scores show up.
 function renderScores(scores) {
 
-  scores.forEach((score) => {
+  for (i = 0; i < scores.length; i++) {
     
     let div = document.createElement("DIV")
     div.setAttribute("class", "row")
 
     let currentScore = document.createElement("P");
     currentScore.setAttribute("class", "lead")
-    currentScore.textContent = score;
+    currentScore.textContent = scores[i];
 
     let removeBtn = document.createElement("BUTTON");
     removeBtn.innerHTML = "delete"
@@ -224,13 +223,13 @@ function renderScores(scores) {
     div.appendChild(removeBtn)
 
     scoreList.appendChild(div);
+   removeBtn.addEventListener("click", deleteScore);
 
-
-    startContainer.setAttribute("class", "hide");
-    endContainer.setAttribute("class", "hide");
-    questionsContainer.setAttribute("class", "hide");
-    scoreContainer.setAttribute("class", "container text-center");
-  });
+  }
+  startContainer.setAttribute("class", "hide");
+  endContainer.setAttribute("class", "hide");
+  questionsContainer.setAttribute("class", "hide");
+  scoreContainer.setAttribute("class", "container text-center");
 }
 
 // This is an event listener for a try again button that takes you back to the questions and try again.
@@ -250,13 +249,22 @@ function restart(event) {
   setTime();
 }
 
-function deleteScore(event) {
-  event.preventDefault();
+function deleteScore(e) {
+e.preventDefault()
 
-  for (i = 0; i < scoresArr.length; i++) {
 
-    
-      
-  }
+for (i = 0; i < scoresArr.length; i++) {
+
+   if (e.target.previousElementSibling.innerHTML === scoresArr[i]) {
+
+      scoresArr.splice(scoresArr[i], 1)
+
+   }
+
+}
+
+scoreList.innerHTML = "";
+renderScores(scoresArr)
+ 
 
 }
