@@ -115,21 +115,20 @@ tryAgain.addEventListener("click", restart);
 //
 // ======================
 
-
-// This function gets triggered when the start button is clicked 
+// This function gets triggered when the start button is clicked
 function start() {
-  // clesses are used to show or hide containers. 
-  startContainer.setAttribute("class", "hide");
-  endContainer.setAttribute("class", "hide");
-  questionsContainer.setAttribute("class", "container");
-  scoreContainer.setAttribute("class", "hide");
+  startContainer.setAttribute("class", "hide"); // Hide start container.
+  questionsContainer.setAttribute("class", "container"); //Show questions container.
 
+  // Start the timer and fire the questions function.
   setTime();
   questions();
 }
 
+// This function appends all the questions and it's answer buttons.
 function questions() {
   if (i == quizQuestions.length) {
+    // If the quiz is over fire the endQuiz function.
     endQuiz();
   } else {
     questionsDisplay.innerHTML = quizQuestions[i]["question"];
@@ -145,6 +144,7 @@ function questions() {
   }
 }
 
+// This creates the logic for getting right and wrong answers.
 function selectAnswer(e) {
   e.preventDefault();
   if (e.target.innerHTML === quizQuestions[i]["correctAnswer"]) {
@@ -180,10 +180,10 @@ function setTime() {
 
 // This function ends the quiz
 function endQuiz() {
-  startContainer.setAttribute("class", "hide");
-  endContainer.setAttribute("class", "container text-center");
+  endContainer.setAttribute("class", "container");
   questionsContainer.setAttribute("class", "hide");
-  scoreContainer.setAttribute("class", "hide");
+
+  // reset the timer and global variables. 
   i = 0;
   clearInterval(timerInterval);
   timeId.textContent = 0;
@@ -196,12 +196,12 @@ function submit(event) {
   if (userName.value === "") {
     alert("You have to type your name");
   } else {
-    let nameScores = userName.value + ": " + score;
+    let nameScores = userName.value + ": " + score; //Storing the scores and names.
     userName.value = "";
-    scoresArr.push(nameScores);
-    localStorage.setItem("scores", JSON.stringify(scoresArr));
+    scoresArr.push(nameScores);//Pushing them to scoresArr "array"
+    localStorage.setItem("scores", JSON.stringify(scoresArr));//Setting local Storage.
     scoreList.innerHTML = "";
-    renderScores(scoresArr);
+    renderScores(scoresArr);// fire renderScores function and passing in the scoresArr.
   }
 }
 
@@ -225,9 +225,8 @@ function renderScores(scores) {
     scoreList.appendChild(div);
     removeBtn.addEventListener("click", deleteScore);
   }
-  startContainer.setAttribute("class", "hide");
+
   endContainer.setAttribute("class", "hide");
-  questionsContainer.setAttribute("class", "hide");
   scoreContainer.setAttribute("class", "container text-center scoreContainer");
 }
 
