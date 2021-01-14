@@ -21,16 +21,39 @@
     <title>Music Quiz</title>
   </head>
   <body>
-    <header class="mb-5 navbar text-center">
-      <div class="row">
-        <div class="col" id="time">
-          <h3>Time Left <span id="timerNumber">75</span></h3>
+    <header class="mb-5">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light bottom-line">
+        <p class="navbar-brand my-header p-3 text-muted relative">Music Quiz</p>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto pt-3" id="time">
+            <li class="nav-item" id="time">
+              <p>Time Left: <span id="timerNumber">75</span></p>
+            </li>
+            <li class="nav-item" id="score">
+              <p>Score: <span id="userScore">0</span></p>
+            </li>
+          </ul>
         </div>
-        <div class="col" id="score">
-          <h3>Score <span id="userScore">0</span></h3>
-        </div>
-      </div>
+      </nav>
     </header>
+
+    <!-- <div class="col" id="time">
+      <h3>Time Left <span id="timerNumber">75</span></h3>
+    </div>
+    <div class="col" id="score">
+      <h3>Score <span id="userScore">0</span></h3>
+    </div> -->
 
     <!-- Start Button -->
     <div class="container text-center" id="start-container">
@@ -44,7 +67,7 @@
         <div class="heading">
           <h3 id="question"></h3>
         </div>
-       <hr />
+        <hr />
         <div id="answers-container">
           <div id="check-answers"></div>
         </div>
@@ -52,10 +75,7 @@
     </div>
 
     <!-- Finished Container -->
-    <div
-      class="hide"
-      id="end-container"
-    >
+    <div class="hide" id="end-container">
       <div>
         <h5>All Done!</h5>
         <p>Type you're initials</p>
@@ -75,8 +95,7 @@
     <!-- Scores Container -->
     <div class="hide" id="scoreContainer">
       <h3>Top Scores</h3>
-      <div class="" id="scoreList">
-      </div>
+      <div class="" id="scoreList"></div>
 
       <button class="btn-primary" id="tryAgain">Try Again</button>
     </div>

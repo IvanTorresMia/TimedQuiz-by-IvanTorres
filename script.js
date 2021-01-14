@@ -111,11 +111,14 @@ submitBtn.addEventListener("click", submit);
 tryAgain.addEventListener("click", restart);
 
 // Functions start here.
-//=======================
+// =======================
 //
 // ======================
 
+
+// This function gets triggered when the start button is clicked 
 function start() {
+  // clesses are used to show or hide containers. 
   startContainer.setAttribute("class", "hide");
   endContainer.setAttribute("class", "hide");
   questionsContainer.setAttribute("class", "container");

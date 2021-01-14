@@ -7,12 +7,17 @@
   display: none;
 }
 
-/* NavBar Stying */
-.navbar {
+/* Nav Stying */
+/* .navbar {
   text-align: center;
   width: 100%;
   background-color: gray;
+} */
+
+#navbarNav p {
+  margin-right: 2px;
 }
+
 
 /* Second Container Styling */
 #questions-container {
@@ -37,6 +42,7 @@
   padding-bottom: 2px;
 }
 
+/* Global Container Styling */
 .container {
   background-color: #EBEBEB;
   border: 1px solid black;
@@ -53,9 +59,3 @@
   border: 2px solid black;
 }
 
-/* .scoreContainer {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  border: 2px solid black;
-} */
