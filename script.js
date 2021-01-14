@@ -22,11 +22,10 @@ let scoreContainer = document.getElementById("scoreContainer");
 let scoreList = document.getElementById("scoreList");
 let tryAgain = document.getElementById("tryAgain");
 
-
 // local Storage Scores
 let scoresArr = JSON.parse(localStorage.getItem("scores")) || [];
 
-// variables for timer
+// Global Variables
 let i = 0;
 let secondsLeft = 75;
 let score = 0;
@@ -205,26 +204,23 @@ function submit(event) {
 
 // change this function so that only the top scores show up.
 function renderScores(scores) {
-
   for (i = 0; i < scores.length; i++) {
-    
-    let div = document.createElement("DIV")
-    div.setAttribute("class", "row")
+    let div = document.createElement("DIV");
+    div.setAttribute("class", "row");
 
     let currentScore = document.createElement("P");
-    currentScore.setAttribute("class", "lead")
+    currentScore.setAttribute("class", "lead");
     currentScore.textContent = scores[i];
 
     let removeBtn = document.createElement("BUTTON");
-    removeBtn.innerHTML = "delete"
-    removeBtn.setAttribute("class", "btn-primary removeBtn")
- 
+    removeBtn.innerHTML = "delete";
+    removeBtn.setAttribute("class", "btn-primary removeBtn");
+
     div.appendChild(currentScore);
-    div.appendChild(removeBtn)
+    div.appendChild(removeBtn);
 
     scoreList.appendChild(div);
-   removeBtn.addEventListener("click", deleteScore);
-
+    removeBtn.addEventListener("click", deleteScore);
   }
   startContainer.setAttribute("class", "hide");
   endContainer.setAttribute("class", "hide");
@@ -241,6 +237,7 @@ function restart(event) {
   questionsContainer.setAttribute("class", "none container text-center");
   scoreContainer.setAttribute("class", "hide");
 
+  i = 0;
   secondsLeft = 75;
   score = 0;
   userScore.textContent = score;
@@ -250,21 +247,14 @@ function restart(event) {
 }
 
 function deleteScore(e) {
-e.preventDefault()
+  e.preventDefault();
 
+  for (i = 0; i < scoresArr.length; i++) {
+    if (e.target.previousElementSibling.innerHTML === scoresArr[i]) {
+      scoresArr.splice(scoresArr[i], 1);
+    }
+  }
 
-for (i = 0; i < scoresArr.length; i++) {
-
-   if (e.target.previousElementSibling.innerHTML === scoresArr[i]) {
-
-      scoresArr.splice(scoresArr[i], 1)
-
-   }
-
-}
-
-scoreList.innerHTML = "";
-renderScores(scoresArr)
- 
-
+  scoreList.innerHTML = "";
+  renderScores(scoresArr);
 }
