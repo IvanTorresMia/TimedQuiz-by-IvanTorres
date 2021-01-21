@@ -1,45 +1,9 @@
-/* body {
-
-} */
-
-/* Used to Hide Container when not needed */
 .hide {
   display: none;
 }
 
-/* Nav Stying */
-/* .navbar {
-  text-align: center;
-  width: 100%;
-  background-color: gray;
-} */
-
 #navbarNav p {
   margin-right: 2px;
-}
-
-
-/* Second Container Styling */
-#questions-container {
-  width: 18rem;
-  margin: 100px auto;
-}
-#answers-container {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  border: 2px solid black;
-}
-
-.answerButtons {
-  margin-top: 5px;
-  max-width: 250px;
-  padding: 10px;
-}
-
-/* Last Container Styling */
-#scoresList {
-  padding-bottom: 2px;
 }
 
 /* Global Container Styling */
@@ -51,11 +15,50 @@
   margin-right: 0 auto;
   margin-top: 100px;
   text-align: center;
+  width: 20%;
 }
 
 
+/* Second Container Styling */
 .heading {
   margin: 10px;
-  border: 2px solid black;
 }
+
+#questions-container {
+  width: 18rem;
+  margin: 100px auto;
+}
+#answers-container {
+  display: flex;
+  flex-direction: column; 
+  text-align: center;
+}
+
+.answerButtons {
+  margin-top: 5px;
+  max-width: 250px;
+  padding: 10px;
+}
+
+/* Finished Container */
+#submit-button {
+  margin: 5px;
+}
+
+
+/* Last Container Styling */
+#scoresList {
+  padding-bottom: 2px;
+}
+
+/* Score Container */
+#scoreList {
+  display: flex;
+  flex-direction: column; 
+  margin: 8px;
+}
+
+
+
+
 

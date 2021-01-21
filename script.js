@@ -208,10 +208,16 @@ function submit(event) {
 // change this function so that only the top scores show up.
 function renderScores(scores) {
   for (i = 0; i < scores.length; i++) {
-    let div = document.createElement("DIV");
-    div.setAttribute("class", "row");
+    // Make this into a table
 
-    let currentScore = document.createElement("P");
+    
+
+
+
+    let tableRow = document.createElement("TR");
+    tableRow.setAttribute("class", "row m-2");
+
+    let currentScore = document.createElement("TH");
     currentScore.setAttribute("class", "lead");
     currentScore.textContent = scores[i];
 
@@ -220,7 +226,7 @@ function renderScores(scores) {
     removeBtn.setAttribute("class", "btn-primary removeBtn");
 
     div.appendChild(currentScore);
-    div.appendChild(removeBtn);
+    currentScore.appendChild(removeBtn);
 
     scoreList.appendChild(div);
     removeBtn.addEventListener("click", deleteScore);
