@@ -209,26 +209,30 @@ function submit(event) {
 function renderScores(scores) {
   for (i = 0; i < scores.length; i++) {
     // Make this into a table
-
-    
-
-
-
-    let tableRow = document.createElement("TR");
-    tableRow.setAttribute("class", "row m-2");
-
-    let currentScore = document.createElement("TH");
-    currentScore.setAttribute("class", "lead");
-    currentScore.textContent = scores[i];
+    // let tableRow = document.createElement("TR");
+    // tableRow.setAttribute("class", "row m-2");
+    let scoreList = document.getElementById("scoreList");
 
     let removeBtn = document.createElement("BUTTON");
     removeBtn.innerHTML = "delete";
     removeBtn.setAttribute("class", "btn-primary removeBtn");
 
-    div.appendChild(currentScore);
-    currentScore.appendChild(removeBtn);
+        let currentScore = document.createElement("P");
+    currentScore.setAttribute("class", "lead");
+    currentScore.textContent = scores[i];
 
-    scoreList.appendChild(div);
+    let row = scoreList.insertRow(0)
+
+    let cell1 = row.insertCell(0)
+    let cell2 = row.insertCell(1)
+
+    cell1.appendChild(currentScore)
+    cell2.appendChild(removeBtn)
+
+    // div.appendChild(currentScore);
+    // currentScore.appendChild(removeBtn);
+
+    // scoreList.appendChild(tableRow);
     removeBtn.addEventListener("click", deleteScore);
   }
 
@@ -258,11 +262,14 @@ function deleteScore(e) {
   e.preventDefault();
 
   for (i = 0; i < scoresArr.length; i++) {
-    if (e.target.previousElementSibling.innerHTML === scoresArr[i]) {
+    if (e.target.parentElement.previousSibling.firstElementChild.innerHTML === scoresArr[i]) {
       scoresArr.splice(scoresArr[i], 1);
     }
   }
 
   scoreList.innerHTML = "";
   renderScores(scoresArr);
+
+  console.log(e.target.parentElement.previousSibling.firstElementChild.innerHTML)
+
 }
