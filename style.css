@@ -1,5 +1,5 @@
 body {
-  background: url('./images/musicQuiz.jpg') no-repeat center center fixed;
+  background: url("./images/musicQuiz.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -21,8 +21,8 @@ header {
 
 /* Global Container Styling */
 .container {
-  background-color: #EBEBEB;
-box-shadow: 2px 2px 7px black;
+  background-color: #ebebeb;
+  box-shadow: 2px 2px 7px black;
   padding: 20px;
   margin-left: 0 auto;
   margin-right: 0 auto;
@@ -30,7 +30,6 @@ box-shadow: 2px 2px 7px black;
   text-align: center;
   width: 20%;
 }
-
 
 /* Second Container Styling */
 .heading {
@@ -43,7 +42,7 @@ box-shadow: 2px 2px 7px black;
 }
 #answers-container {
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   text-align: center;
 }
 
@@ -58,20 +57,22 @@ box-shadow: 2px 2px 7px black;
   margin: 5px;
 }
 
-
 /* Last Container Styling */
 #scoresList {
-  padding-bottom: 2px;
+  padding: 2px;
+}
+
+.listRow {
+background-color: #282828;
+box-shadow: 2px 2px 5px black;
+border: 1px solid black;
+margin: 2px;
+color: white;
 }
 
 /* Score Container */
 #scoreList {
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   margin: 8px;
 }
-
-
-
-
-

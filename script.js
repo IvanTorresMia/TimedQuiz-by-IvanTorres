@@ -219,7 +219,8 @@ function renderScores(scores) {
     currentScore.textContent = scores[i];
 
     let row = scoreList.insertRow(0);
-
+    row.setAttribute("class", "listRow")
+    
     let cell1 = row.insertCell(0);
     let cell2 = row.insertCell(1);
 
