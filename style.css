@@ -1,15 +1,28 @@
+body {
+  background: url('./images/musicQuiz.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 .hide {
   display: none;
 }
 
 #navbarNav p {
-  margin-right: 2px;
+  margin-right: 3px;
+}
+
+header {
+  background-color: #282828;
+  color: white;
 }
 
 /* Global Container Styling */
 .container {
   background-color: #EBEBEB;
-  border: 1px solid black;
+box-shadow: 2px 2px 7px black;
   padding: 20px;
   margin-left: 0 auto;
   margin-right: 0 auto;

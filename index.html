@@ -22,7 +22,7 @@
   </head>
   <body>
     <header class="mb-5">
-      <nav class="navbar navbar-expand-lg navbar-light bg-light bottom-line">
+      <nav class="navbar navbar-expand-lg bottom-line">
         <p class="navbar-brand my-header p-3 text-muted relative">Music Quiz</p>
         <button
           class="navbar-toggler"
@@ -38,7 +38,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ml-auto pt-3" id="time">
             <li class="nav-item" id="time">
-              <p>Time Left: <span id="timerNumber">75</span></p>
+              <p>Time Left: <span id="timerNumber">50</span></p>
             </li>
             <li class="nav-item" id="score">
               <p>Score: <span id="userScore">0</span></p>
@@ -51,7 +51,7 @@
     <!-- Start Button -->
     <div class="container text-center" id="start-container">
       <h5>Music Quiz</h5>
-      <button class="btn btn-primary" id="start-button">Start</button>
+      <button class="btn btn-secondary" id="start-button">Start</button>
     </div>
 
     <!-- Questions Container -->
@@ -67,7 +67,7 @@
     </div>
 
     <!-- Finished Container -->
-    <div class="container" id="end-container">
+    <div class="hide" id="end-container">
       <div>
         <h5>All Done!</h5>
         <p>Type you're initials</p>
@@ -75,7 +75,7 @@
           <input id="name" type="text" />
           <button
             type="submit"
-            class="btn btn-primary submit-button"
+            class="btn btn-secondary submit-button"
             id="submit-button"
           >
             Submit
@@ -85,11 +85,11 @@
     </div>
 
     <!-- Scores Container -->
-    <div class="container" id="scoreContainer">
+    <div class="hide" id="scoreContainer">
       <h3>Top Scores</h3>
       <table class="" id="scoreList"></table>
 
-      <button class="btn-primary" id="tryAgain">Try Again</button>
+      <button class="btn btn-secondary" id="tryAgain">Try Again</button>
     </div>
 
     <!-- Optional JavaScript -->

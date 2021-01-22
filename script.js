@@ -27,7 +27,7 @@ let scoresArr = JSON.parse(localStorage.getItem("scores")) || [];
 
 // Global Variables
 let i = 0;
-let secondsLeft = 75;
+let secondsLeft = 50;
 let score = 0;
 let timerInterval;
 
@@ -136,7 +136,7 @@ function questions() {
     for (j = 0; j < 4; j++) {
       let answerButton = document.createElement("BUTTON");
       answerButton.setAttribute("id", "answer");
-      answerButton.setAttribute("class", "btn-primary rounded answerButtons");
+      answerButton.setAttribute("class", "btn-secondary rounded answerButtons");
       answerButton.textContent = quizQuestions[i].choices[j];
       buttonCon.appendChild(answerButton);
       answerButton.addEventListener("click", selectAnswer);
@@ -183,7 +183,7 @@ function endQuiz() {
   endContainer.setAttribute("class", "container");
   questionsContainer.setAttribute("class", "hide");
 
-  // reset the timer and global variables. 
+  // reset the timer and global variables.
   i = 0;
   clearInterval(timerInterval);
   timeId.textContent = 0;
@@ -198,36 +198,33 @@ function submit(event) {
   } else {
     let nameScores = userName.value + ": " + score; //Storing the scores and names.
     userName.value = "";
-    scoresArr.push(nameScores);//Pushing them to scoresArr "array"
-    localStorage.setItem("scores", JSON.stringify(scoresArr));//Setting local Storage.
+    scoresArr.push(nameScores); //Pushing them to scoresArr "array"
+    localStorage.setItem("scores", JSON.stringify(scoresArr)); //Setting local Storage.
     scoreList.innerHTML = "";
-    renderScores(scoresArr);// fire renderScores function and passing in the scoresArr.
+    renderScores(scoresArr); // fire renderScores function and passing in the scoresArr.
   }
 }
 
 // change this function so that only the top scores show up.
 function renderScores(scores) {
   for (i = 0; i < scores.length; i++) {
-    // Make this into a table
-    // let tableRow = document.createElement("TR");
-    // tableRow.setAttribute("class", "row m-2");
     let scoreList = document.getElementById("scoreList");
 
     let removeBtn = document.createElement("BUTTON");
     removeBtn.innerHTML = "delete";
-    removeBtn.setAttribute("class", "btn-primary removeBtn");
+    removeBtn.setAttribute("class", "btn btn-secondary removeBtn");
 
-        let currentScore = document.createElement("P");
+    let currentScore = document.createElement("P");
     currentScore.setAttribute("class", "lead");
     currentScore.textContent = scores[i];
 
-    let row = scoreList.insertRow(0)
+    let row = scoreList.insertRow(0);
 
-    let cell1 = row.insertCell(0)
-    let cell2 = row.insertCell(1)
+    let cell1 = row.insertCell(0);
+    let cell2 = row.insertCell(1);
 
-    cell1.appendChild(currentScore)
-    cell2.appendChild(removeBtn)
+    cell1.appendChild(currentScore);
+    cell2.appendChild(removeBtn);
 
     removeBtn.addEventListener("click", deleteScore);
   }
@@ -246,7 +243,7 @@ function restart(event) {
   scoreContainer.setAttribute("class", "hide");
 
   i = 0;
-  secondsLeft = 75;
+  secondsLeft = 50;
   score = 0;
   userScore.textContent = score;
   buttonCon.innerHTML = "";
@@ -258,16 +255,19 @@ function deleteScore(e) {
   e.preventDefault();
 
   for (i = 0; i < scoresArr.length; i++) {
-    if (e.target.parentElement.previousSibling.firstElementChild.innerHTML === scoresArr[i]) {
+    if (
+      e.target.parentElement.previousSibling.firstElementChild.innerHTML ===
+      scoresArr[i]
+    ) {
       scoresArr.splice(scoresArr[i], 1);
     }
   }
 
   scoreList.innerHTML = "";
   renderScores(scoresArr);
-  localStorage.setItem("scores", JSON.stringify(scoresArr));//Setting local Storage.
+  localStorage.setItem("scores", JSON.stringify(scoresArr)); //Setting local Storage.
 
-
-  console.log(e.target.parentElement.previousSibling.firstElementChild.innerHTML)
-
+  console.log(
+    e.target.parentElement.previousSibling.firstElementChild.innerHTML
+  );
 }
