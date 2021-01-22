@@ -229,10 +229,6 @@ function renderScores(scores) {
     cell1.appendChild(currentScore)
     cell2.appendChild(removeBtn)
 
-    // div.appendChild(currentScore);
-    // currentScore.appendChild(removeBtn);
-
-    // scoreList.appendChild(tableRow);
     removeBtn.addEventListener("click", deleteScore);
   }
 
@@ -269,6 +265,8 @@ function deleteScore(e) {
 
   scoreList.innerHTML = "";
   renderScores(scoresArr);
+  localStorage.setItem("scores", JSON.stringify(scoresArr));//Setting local Storage.
+
 
   console.log(e.target.parentElement.previousSibling.firstElementChild.innerHTML)
 
