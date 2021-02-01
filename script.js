@@ -272,3 +272,10 @@ function deleteScore(e) {
     e.target.parentElement.previousSibling.firstElementChild.innerHTML
   );
 }
+
+
+
+
+// Add a Quiz Review Page. 
+// This should be fun. 
+

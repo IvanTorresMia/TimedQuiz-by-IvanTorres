@@ -2,7 +2,7 @@
 
 ## Description
 
-Welcome to my music quiz. In here you will find how much you know about music and trust me every questions is very well thought out so let's see how much of an expert you are. You are presented with start button then once you click you are presented with 10 questions which you will press buttons for and a timer which will start at 75 seconds. So here's the tricky part, anytime you get one of my very hard questions wrong your timer will deduct time and you are now running out of time to finish this quiz. Once you are done you will be presented with a form where you can input your initials and it should keep track of your scores, then display them in that same container.
+Welcome to my Times Music Quiz. Here you will will be tested in your knowladge of music with questions related to bands, movies and specific artist knowledge. The tricky part is that you only get 50 seconds to complete the quiz and every answer you get wrong deducts 10 seconds from the timer. Once you are done you can type your name and your scores will be saved to local storage. You will also have the ability to delete past scores when they are no longer desired. Good luck!
 
 ## Technologies
 
@@ -14,86 +14,88 @@ Welcome to my music quiz. In here you will find how much you know about music an
 
 ## Features
 
-- Gif of my Website.
+- Gif of the quiz.
 
 ![Quiz-Gif](./images/newQuiz.gif)
 
-- This project was definetely challenging but with the guidence of my tutor and the help from some fellow students I was able to build this and make it work, here are some code snippets I made.
+## Code
 
-- This code listens to the start button and once it is clicked it hides all the containers and shows the questions container.
-
-```
- tartBtn.addEventListener("click", function () {
-  startContainer.setAttribute("class", "hide");
-  endContainer.setAttribute("class", "hide");
-  questionsContainer.setAttribute("class", "none");
-
-  setTime();
-  startQuiz();
-});
+### Setting the timer
+- I used a simple timer function which updates every second subtracting the time by 1
 
 ```
-
-- This code is an example of what happens when you press one of the answer buttons. It increments i so therefore you get a new set of questions for the next round.
-
-```
-  if (i == quizQuestions.length) {
-    endQuiz();
-  }
-  questionsDisplay.textContent = quizQuestions[i]["question"];
-  button1.textContent = quizQuestions[i].choices[0];
-  button2.textContent = quizQuestions[i].choices[1];
-  button3.textContent = quizQuestions[i].choices[2];
-  button4.textContent = quizQuestions[i].choices[3];
+function setTime() {
+  timerInterval = setInterval(function () {
+    secondsLeft--;
+    timeId.textContent = secondsLeft;
+    if (secondsLeft <= 0) {
+      endQuiz();
+    }
+  }, 1000);
 }
+```
 
-button1.addEventListener("click", function (event) {
-  if (event.target.innerHTML === quizQuestions[i]["correctAnswer"]) {
+### Login for selecting answers
+
+- Using an array of objects with questions and answers, as well as another function that loops through the array of objects. I was able to listen to the current click and compare the inner HTML to the correct answer. 
+
+```
+function selectAnswer(e) {
+  e.preventDefault();
+  if (e.target.innerHTML === quizQuestions[i]["correctAnswer"]) {
     i++;
     score++;
-    checkContainer.textContent = "Correct!"
-    startQuiz();
+    checkContainer.textContent = "Correct!";
+    buttonCon.innerHTML = "";
+    userScore.innerHTML = score;
+    questions();
   } else {
-    checkContainer.textContent = "Incorrect!"
+    buttonCon.innerHTML = "";
+    checkContainer.textContent = "Incorrect!";
     i++;
-    if (secondsLeft === 0) {
-        endQuiz();
+    if (secondsLeft <= 0) {
+      endQuiz();
     } else {
-        secondsLeft = secondsLeft - 10;
+      secondsLeft -= 10;
     }
-    startQuiz();
+    questions();
   }
-});
+}
 ```
 
-- This function ends the quiz hidding all of the containers and showing the last one for your initials. You can call this function when ever you want the game to end.
+### Rendering Scores.
+
+- I created a table that renders the scores rom the local storage. 
 
 ```
-function endQuiz() {
-  startContainer.setAttribute("class", "hide");
-  endContainer.setAttribute("class", "none");
-  questionsContainer.setAttribute("class", "hide");
-  i = 0;
-  clearInterval(timerInterval);
-  timeId.textContent = 0;
-};
+function renderScores(scores) {
+  for (i = 0; i < scores.length; i++) {
+    let scoreList = document.getElementById("scoreList");
+
+    let removeBtn = document.createElement("BUTTON");
+    removeBtn.innerHTML = "delete";
+    removeBtn.setAttribute("class", "btn btn-secondary removeBtn");
+
+    let currentScore = document.createElement("P");
+    currentScore.setAttribute("class", "lead");
+    currentScore.textContent = scores[i];
+
+    let row = scoreList.insertRow(0);
+    row.setAttribute("class", "listRow")
+    
+    let cell1 = row.insertCell(0);
+    let cell2 = row.insertCell(1);
+
+    cell1.appendChild(currentScore);
+    cell2.appendChild(removeBtn);
+
+    removeBtn.addEventListener("click", deleteScore);
+  }
+
+  endContainer.setAttribute("class", "hide");
+  scoreContainer.setAttribute("class", "container text-center scoreContainer");
+}
 ```
-
-Local storage attempt
-
-- This Code was an attempt to use local storage to display the scores in another, unfortunately I began to run out of time and went another way but decided to include this here anyways because I think I got close.
-
-- This is the code that when you click the submit button you send a new array into the local storage by using JSON.stringify
-
-![Quiz-Gif](images/local-Code.jpg)
-
-- This Code was in another script.js file dedicated to another html file which would be used to display the scores pulling the array and using JSON.parse and using forEach to make them into a list.
-
-![Quiz-Gif](images/local-Code2.jpg)
-
-- This is what would have been the container in the Scores.html file in which the scores would be displayed.
-
-![Quiz-Gif](images/local-Code3.jpg)
 
 ## Author
 
