@@ -107,7 +107,8 @@ Ivan Torres
 
 ## Credits
 
-- Credits for this homework assignment go out to Jerome, Manuel, Kerwin, Roger, and all of my classmates who helped me in study sessions. As well as my tutor who helped me a ton with understanding this homework assignment.
+- Will always give credits to those who have helped me learn to code including past instructors. and friends that give their input on how I can make my projects better. 
+
 - [StackOverFlow](https://stackoverflow.com/)
 - [Bootstrap](https://getbootstrap.com/)
 
