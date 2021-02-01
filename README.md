@@ -114,4 +114,4 @@ Ivan Torres
 
 ## License]
 
-[MIT](https://choosealicense.com/licenses/mit/#) license
+[![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](https://www.mit.edu/~amini/LICENSE.md)
