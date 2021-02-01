@@ -112,6 +112,6 @@ Ivan Torres
 - [StackOverFlow](https://stackoverflow.com/)
 - [Bootstrap](https://getbootstrap.com/)
 
-## License]
+## License
 
 [![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](https://www.mit.edu/~amini/LICENSE.md)
