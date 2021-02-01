@@ -10,7 +10,7 @@ Welcome to my music quiz. In here you will find how much you know about music an
 ## Features
 * Gif of my Website. 
 
-![Quiz-Gif](images/timed-quiz2.gif)
+![Quiz-Gif](./images/newQuiz.gif)
 
 * This project was definetely challenging but with the guidence of my tutor and the help from some fellow students I was able to build this and make it work, here are some code snippets I made. 
 
