@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap");
 
 body {
   /* background: url("./images/musicQuiz.jpg") no-repeat center center fixed; */
@@ -6,7 +6,7 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  font-family: 'Noto Sans JP', sans-serif;
+  font-family: "Noto Sans JP", sans-serif;
 }
 
 .hide {
@@ -14,9 +14,9 @@ body {
 }
 
 header {
- color:  #2AB7CA;
- padding-top: 2rem;
- padding-bottom: 2rem;
+  color: #2ab7ca;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 
 .navbar h1 {
@@ -38,12 +38,20 @@ header {
   border-radius: 2rem;
 }
 
-.start-container button {
-  background-color: #2AB7CA;
-  border: 0.10rem solid black;
-  width: 5rem !important;
+@media only screen and (max-width: 600px) {
+  .container {
+    width: 70%;
+  }
+
 }
 
+
+
+.start-container button {
+  background-color: #2ab7ca;
+  border: 0.1rem solid black;
+  width: 5rem !important;
+}
 
 /* Second Container Styling */
 .heading {
@@ -57,14 +65,14 @@ header {
 }
 .time-container h4 {
   color: #ebebeb;
-  background-color: #2AB7CA;
+  background-color: #2ab7ca;
   max-width: 15rem;
   max-height: 4rem;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 0.5rem;
   border-radius: 1.5rem;
-  padding: 0.40rem;
+  padding: 0.4rem;
   box-shadow: 0.0625rem 0.0625rem 0.0625rem black;
 }
 
@@ -74,10 +82,22 @@ header {
   min-width: 15rem;
   max-height: 4rem;
   min-height: 4rem;
-  padding: 0.40rem;
-  background-color: #2AB7CA;
-  border: 0.10rem solid black;
+  padding: 0.4rem;
+  background-color: #2ab7ca;
+  border: 0.1rem solid black;
   width: 5rem !important;
+}
+
+@media only screen and (max-width: 600px) {
+  .answerButtons {
+    max-width: 9rem;
+    min-width: 9rem;
+    max-height: 4rem;
+    min-height: 4rem;
+    font-size: 0.8rem;
+    right: 80%;
+  }
+
 }
 
 /* Finished Container */
@@ -90,13 +110,41 @@ header {
   padding: 2px;
 }
 
-.listRow {
-background-color: #282828;
-box-shadow: 2px 2px 5px black;
-border: 1px solid black;
-margin: 2px;
-color: white;
+.scoresList {
+  margin: 10rem;
 }
+.scoresList p {
+color: #2ab7ca;
+font-size: 1.5rem;
+text-transform: uppercase;
+}
+
+.listItem {
+  margin-top: 1rem;
+  margin-left: 4rem;
+  margin-right: 4rem;
+  border-bottom: 0.10rem solid #2ab7ca;
+}
+
+@media only screen and (max-width: 600px) {
+  .scoresList {
+    margin: 10rem;
+  }
+  .scoresList p {
+
+  font-size: 1rem;
+ 
+  }
+  
+  .listItem {
+    margin-top: 1rem;
+    margin-left: 4rem;
+    margin-right: 4rem;
+    border-bottom: 0.10rem solid #2ab7ca;
+  }
+
+}
+
 
 /* Score Container */
 #scoreList {

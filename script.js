@@ -212,20 +212,26 @@ function renderScores(scores) {
 
     let removeBtn = document.createElement("BUTTON");
     removeBtn.innerHTML = "delete";
-    removeBtn.setAttribute("class", "btn btn-secondary removeBtn");
+    removeBtn.setAttribute("class", "btn-secondary btn removeBtn");
 
     let currentScore = document.createElement("P");
-    currentScore.setAttribute("class", "lead");
     currentScore.textContent = scores[i];
 
-    let row = scoreList.insertRow(0);
-    row.setAttribute("class", "listRow")
-    
-    let cell1 = row.insertCell(0);
-    let cell2 = row.insertCell(1);
+    let buttonDiv = document.createElement("DIV");
+    let pDiv = document.createElement("DIV");
 
-    cell1.appendChild(currentScore);
-    cell2.appendChild(removeBtn);
+    let masterDIV = document.createElement("DIV")
+    masterDIV.setAttribute("class", "row listItem");
+
+    pDiv.appendChild(currentScore);
+    pDiv.setAttribute("class", "col");
+    buttonDiv.appendChild(removeBtn);
+    buttonDiv.setAttribute("class", "col")
+
+
+    masterDIV.appendChild(pDiv);
+    masterDIV.appendChild(buttonDiv);
+    scoreList.appendChild(masterDIV);
 
     removeBtn.addEventListener("click", deleteScore);
   }
