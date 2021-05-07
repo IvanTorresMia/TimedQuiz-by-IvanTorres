@@ -129,6 +129,7 @@ text-transform: uppercase;
 @media only screen and (max-width: 600px) {
   .scoresList {
     margin: 10rem;
+    align-items: center;
   }
   .scoresList p {
 
@@ -138,11 +139,13 @@ text-transform: uppercase;
   
   .listItem {
     margin-top: 1rem;
-    margin-left: 4rem;
-    margin-right: 4rem;
     border-bottom: 0.10rem solid #2ab7ca;
+    padding-bottom: 0.5rem;
   }
 
+  #name {
+    max-width: 6rem;
+  }
 }
 
 
