@@ -136,7 +136,7 @@ function questions() {
     for (j = 0; j < 4; j++) {
       let answerButton = document.createElement("BUTTON");
       answerButton.setAttribute("id", "answer");
-      answerButton.setAttribute("class", "btn-secondary rounded answerButtons");
+      answerButton.setAttribute("class", "btn rounded answerButtons");
       answerButton.textContent = quizQuestions[i].choices[j];
       buttonCon.appendChild(answerButton);
       answerButton.addEventListener("click", selectAnswer);
@@ -240,7 +240,7 @@ function restart(event) {
 
   startContainer.setAttribute("class", "hide");
   endContainer.setAttribute("class", "hide");
-  questionsContainer.setAttribute("class", "none container text-center");
+  questionsContainer.setAttribute("class", "none container");
   scoreContainer.setAttribute("class", "hide");
 
   i = 0;

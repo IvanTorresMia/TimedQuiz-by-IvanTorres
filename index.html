@@ -23,45 +23,37 @@
   <body>
     <header class="mb-5">
       <nav class="navbar navbar-expand-lg bottom-line">
-        <p class="navbar-brand my-header p-3 text-muted relative">Music Quiz</p>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ml-auto pt-3" id="time">
-            <li class="nav-item" id="time">
-              <p>Time Left: <span id="timerNumber">50</span></p>
-            </li>
-            <li class="nav-item" id="score">
-              <p>Score: <span id="userScore">0</span></p>
-            </li>
-          </ul>
-        </div>
+        <h1>Music Quiz</h1>
       </nav>
     </header>
 
     <!-- Start Button -->
-    <div class="container text-center" id="start-container">
+    <div class="container text-center start-container" id="start-container">
       <h5>Music Quiz</h5>
-      <button class="btn btn-secondary" id="start-button">Start</button>
+      <button class="btn" id="start-button">Start</button>
     </div>
+
+ 
 
     <!-- Questions Container -->
     <div class="hide" id="question-container">
-      <div>
         <div class="heading">
           <h3 id="question"></h3>
         </div>
         <div id="answers-container">
           <div id="check-answers"></div>
+        </div>
+    </div>
+
+  <!-- Time Container -->
+    <div class="container time-container">
+      <h4>Check your time!</h2>
+      <div id="time">
+        <div id="time">
+          <p>Time Left: <span id="timerNumber">50</span></p>
+        </div>
+        <div id="score">
+          <p>Score: <span id="userScore">0</span></p>
         </div>
       </div>
     </div>
